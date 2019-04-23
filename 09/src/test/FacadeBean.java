@@ -20,16 +20,14 @@ import javax.ws.rs.QueryParam;
  */
 
 @Stateless
-@LocalBean
-@Path("calc")
-public class FacadeBean{
+public class FacadeBean implements FacadeBeanRemote{
 
 	@EJB
 	private ExecutiveBean exe;
 
 	@GET
-    public int doPlus(@QueryParam("key") int a ) {
-    	int result = exe.doPlus(exe.doPlus(a, a), a);
+    public int doPlus(int a, int b, int c ) {
+    	int result = exe.doPlus(exe.doPlus(a, b), c);
     	System.out.println(result);
     	return result;
     }

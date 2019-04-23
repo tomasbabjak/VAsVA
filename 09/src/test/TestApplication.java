@@ -18,7 +18,6 @@ public class TestApplication extends Application {
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> cls = new HashSet<Class<?>>();
 		cls.add(TestSession.class);
-		cls.add(FacadeBean.class);
 		return super.getClasses();
 	}
 

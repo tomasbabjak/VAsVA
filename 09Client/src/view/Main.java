@@ -1,0 +1,45 @@
+package view;
+
+import controller.LoginView;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
+
+public class Main extends Application {
+
+
+   // private FilmSceneView controller;
+    private LoginView controller;
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+       // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewFilmsScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginScene.fxml"));
+        Parent parent = fxmlLoader.load();
+        controller = fxmlLoader.getController();
+
+        primaryStage.setTitle("Title");
+        primaryStage.setScene(new Scene(parent));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.show();
+    }
+
+    static String getPath() {
+        String path = ClassLoader.getSystemClassLoader().getResource(".").getPath();
+        return path;
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        launch(args);
+        Platform.exit();
+    }
+
+
+}
