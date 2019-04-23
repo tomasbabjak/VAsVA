@@ -1,5 +1,6 @@
 package controller;
 
+import entity.Customer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -28,17 +29,17 @@ public class LoginView {
 
     public void loginClick(ActionEvent actionEvent) {
 
-        boolean checked = false;
+        Customer user = null;
 
         try {
             Context ctx = new InitialContext();
             CustomerManagerRemote cusRemote = (CustomerManagerRemote) ctx.lookup(JNDI);
-            checked = cusRemote.logIn(usernameBox.getText(),passwordBox.getText());
+            user = cusRemote.logIn(usernameBox.getText(),passwordBox.getText());
         }catch (NamingException e){
             e.printStackTrace();
         }
 
-        if(checked){
+        if(user != null){
             SceneCreator sc = new SceneCreator();
             try {
                 sc.launchSceneMovies();

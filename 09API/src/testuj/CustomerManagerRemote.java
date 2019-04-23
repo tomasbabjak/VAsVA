@@ -1,9 +1,11 @@
 package testuj;
 
+import entity.Customer;
+
 import javax.ejb.Remote;
 
 @Remote
 public interface CustomerManagerRemote {
 
-    public boolean logIn(String name, String password);
+    public Customer logIn(String name, String password);
 }
