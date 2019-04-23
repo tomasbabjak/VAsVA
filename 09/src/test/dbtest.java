@@ -1,11 +1,14 @@
 package test;
 
+import entity.Movie;
 import testuj.dbtestRemote;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class dbtest implements dbtestRemote {
@@ -23,6 +26,33 @@ public class dbtest implements dbtestRemote {
         result = (Long) query.getSingleResult();
 
         return Long.valueOf(result).intValue();
+    }
+
+    public List<byte[]> getImage() {
+
+        List<Movie> movieList = null;
+        String sql = "SELECT m from Movie m";
+
+        Query query = entityManager.createQuery(sql);
+        movieList = query.getResultList();
+
+        List<byte[]> pole = new ArrayList<>();
+        for(Movie movie : movieList){
+            pole.add(movie.getImage());
+        }
+
+       // byte[] pole = movieList.get(0).getImage();
+        return pole;
+    }
+
+    public List<Movie> getMovies(){
+        List<Movie> movieList = null;
+        String sql = "SELECT m from Movie m";
+
+        Query query = entityManager.createQuery(sql);
+        movieList = query.getResultList();
+
+        return movieList;
     }
 
 }

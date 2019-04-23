@@ -3,9 +3,11 @@ package entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Entity
-public class Movie {
+public class Movie implements Serializable {
 
   @Id
   @GeneratedValue
@@ -15,7 +17,11 @@ public class Movie {
   private String movieCast;
   private String description;
   private long durationMin;
+  private byte[] image;
+  private java.sql.Timestamp premiere_date;
 
+  public Movie() {
+  }
 
   public long getId() {
     return id;
@@ -68,4 +74,19 @@ public class Movie {
     this.durationMin = durationMin;
   }
 
+  public Timestamp getPremiere_date() {
+    return premiere_date;
+  }
+
+  public void setPremiere_date(Timestamp premiere_date) {
+    this.premiere_date = premiere_date;
+  }
+
+  public byte[] getImage() {
+    return image;
+  }
+
+  public void setImage(byte[] image) {
+    this.image = image;
+  }
 }
