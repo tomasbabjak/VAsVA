@@ -3,9 +3,10 @@ package entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class City {
+public class City implements Serializable {
 
   @Id
   @GeneratedValue
@@ -30,4 +31,8 @@ public class City {
     this.cityName = cityName;
   }
 
+  @Override
+  public String toString() {
+    return cityName;
+  }
 }

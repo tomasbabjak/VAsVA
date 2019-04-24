@@ -3,12 +3,9 @@ package test;
 import testuj.FacadeBeanRemote;
 
 import javax.ejb.EJB;
-import javax.ejb.Local;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+
 
 /**
  * Facade beana, ktora prevola executivnu beanu pre vykonanie konkretnej logiky

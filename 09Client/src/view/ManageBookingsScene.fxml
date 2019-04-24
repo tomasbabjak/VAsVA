@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookingView">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="31.0" prefHeight="470.0" prefWidth="900.0">
+         <children>
+            <AnchorPane layoutX="174.0" layoutY="7.0" prefHeight="453.0" prefWidth="723.0" style="-fx-background-color: #2a3138;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="7.0">
+               <children>
+                  <ImageView fx:id="Image" cache="true" depthTest="ENABLE" fitHeight="92.0" fitWidth="647.0" layoutX="72.0" pickOnBounds="true" preserveRatio="true">
+                  </ImageView>
+                  <AnchorPane layoutX="32.0" layoutY="92.0" prefHeight="337.0" prefWidth="666.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="25.0">
+                     <children>
+                        <Pane fx:id="seatPane" layoutX="-29.0" prefHeight="337.0" prefWidth="666.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="37.0" prefWidth="702.0">
+         <children>
+            <MenuBar prefHeight="35.0" prefWidth="900.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
+            <Text fill="WHITE" layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="Bookings" />
+            <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="639.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="57.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="34.0" prefHeight="378.0" prefWidth="157.0">
+         <children>
+             <Separator layoutX="168.0" layoutY="9.0" orientation="VERTICAL" prefHeight="453.0" prefWidth="8.0" />
+            <Text layoutX="72.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Film" />
+            <Text layoutX="71.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+            <DatePicker fx:id="datePicker" layoutX="18.0" layoutY="135.0" onAction="#picked_date" prefHeight="27.0" prefWidth="141.0" />
+            <Text layoutX="70.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" />
+            <ComboBox fx:id="timeDropDownList" layoutX="15.0" layoutY="203.0" onAction="#pickedTime" prefHeight="28.0" prefWidth="141.0" />
+            <Button layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#bookSeat" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Book Seat" textFill="WHITE" />
+            <TextField fx:id="movie_title" alignment="CENTER" editable="false" layoutX="11.0" layoutY="31.0" text="Movie title" />
+            <ComboBox fx:id="cityBox" layoutX="13.0" layoutY="85.0" onAction="#selectedCity" prefWidth="150.0" />
+            <Label layoutX="74.0" layoutY="68.0" text="City" />
+            <Button layoutX="19.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Search" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
