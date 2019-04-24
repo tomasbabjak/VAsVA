@@ -1,6 +1,7 @@
 package managers;
 
 import entity.City;
+import entity.Screening;
 import executive.BookingExe;
 import testuj.BookingManagerRemote;
 
@@ -19,6 +20,7 @@ public class BookingManager implements BookingManagerRemote {
     public List<Integer> getReservedSeats(int screaning) {
 
         List<Integer> result = bookingExe.getSeats(screaning);
+        System.out.println(result.toString());
 
         return result;
     }
@@ -32,9 +34,9 @@ public class BookingManager implements BookingManagerRemote {
     }
 
     @Override
-    public List<Date> getDates(long movie_id,long cityId) {
+    public List<Screening> getDates(long movie_id, long cityId) {
 
-        List<Date> dates = bookingExe.getDates(movie_id,cityId);
+        List<Screening> dates = bookingExe.getDates(movie_id,cityId);
 
         return dates;
     }

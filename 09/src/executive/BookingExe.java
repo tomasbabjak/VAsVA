@@ -2,6 +2,7 @@ package executive;
 
 import dao.BookingDao;
 import entity.City;
+import entity.Screening;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -20,10 +21,10 @@ public class BookingExe {
 
     public List<Integer> getSeats(int screaning) {
 
-        List<Integer> result = new ArrayList<>();
+        List<Integer> result;
 
         result = dao.getSeats(screaning);
-
+        System.out.println(result.toString());
         return result;
     }
 
@@ -31,15 +32,16 @@ public class BookingExe {
         return dao.getCities();
     }
 
-    public List<Date> getDates(long movie_id,long cityId) {
+    public List<Screening> getDates(long movie_id, long cityId) {
 
-        List<Timestamp> timestamps = dao.getDates(movie_id,cityId);
-        List<Date> dates = new ArrayList<>();
-
-        for(Timestamp time : timestamps){
-            dates.add(new Date(time.getTime()));
+        List<Screening> db = dao.getDates(movie_id,cityId);
+        List<Screening> result = new ArrayList<>();
+        for(Screening ele : db){
+           Screening nn = new Screening();
+           nn.setId(ele.getId());
+           nn.setScreeningStart(ele.getScreeningStart());
+           result.add(nn);
         }
-
-        return dates;
+        return result;
     }
 }

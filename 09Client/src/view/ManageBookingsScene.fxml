@@ -56,7 +56,7 @@
             <TextField fx:id="movie_title" alignment="CENTER" editable="false" layoutX="11.0" layoutY="31.0" text="Movie title" />
             <ComboBox fx:id="cityBox" layoutX="13.0" layoutY="85.0" onAction="#selectedCity" prefWidth="150.0" />
             <Label layoutX="74.0" layoutY="68.0" text="City" />
-            <Button layoutX="19.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Search" textFill="WHITE" />
+            <Button layoutX="19.0" layoutY="252.0" mnemonicParsing="false" onAction="#search" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Search" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

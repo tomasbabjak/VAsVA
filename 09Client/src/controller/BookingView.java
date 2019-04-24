@@ -2,6 +2,7 @@ package controller;
 
 import entity.City;
 import entity.Movie;
+import entity.Screening;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
@@ -9,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -21,6 +23,7 @@ import testuj.BookingManagerRemote;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.io.File;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,8 +36,8 @@ public class BookingView {
     int screening_id;
     Movie movie;
     long movie_id = 2;
-    String City;
-
+    boolean City = false;
+    int selected_day = -1;
     BookingManagerRemote bmr = null;
 
 
@@ -43,6 +46,7 @@ public class BookingView {
     List<City> cities = null;
     List<Date> dates = null;
     List<String> times = new ArrayList<>();
+    List<Screening> screenings = new ArrayList<>();
 
     public BorderPane border;
     public ImageView Image;
@@ -69,6 +73,9 @@ public class BookingView {
 
 
     public void picked_date(ActionEvent actionEvent) {
+        if(City){
+            fillTimes();
+        }
     }
 
     public void pickedTime(ActionEvent actionEvent) {
@@ -76,7 +83,9 @@ public class BookingView {
 
     public void selectedCity(ActionEvent actionEvent) {
        City city = (entity.City) cityBox.getSelectionModel().getSelectedItem();
-       dates = bmr.getDates(movie_id,city.getCityId());
+       screenings = bmr.getDates(movie_id,city.getCityId());
+       City = true;
+     //  dates = bmr.getDates(movie_id,city.getCityId());
        fillTimes();
     }
 
@@ -91,14 +100,13 @@ public class BookingView {
         Calendar c =  Calendar.getInstance();
         c.set(ld.getYear(), ld.getMonthValue(), ld.getDayOfMonth());
         Date date = c.getTime();
+        selected_day = date.getDate();
         times = new ArrayList<>();
-        for(Date ii : dates){
-            if(ii.getDay() == date.getDay()){
-               times.add(ii.getHours() + ":" + ii.getMinutes());
+        for(Screening ele : screenings){
+            if(ele.getScreeningStart().getDate() == date.getDate()){
+                times.add(ele.getScreeningStart().getHours() + ":" + ele.getScreeningStart().getMinutes());
             }
-            //times.add(ii.getHours() + ":" + ii.getMinutes());
         }
-
         timeDropDownList.setItems(FXCollections.observableArrayList(times));
 
 
@@ -132,6 +140,26 @@ public class BookingView {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    public void search(ActionEvent actionEvent) {
+
+        seats.clear();
+        Screening scree = screenings.stream().filter(e -> e.getScreeningStart().getDate() == selected_day)
+                .filter(t -> ((String)timeDropDownList.getSelectionModel().getSelectedItem()).equals(t.getScreeningStart().getHours() + ":" + t.getScreeningStart().getMinutes()))
+                .findFirst()
+                .orElse(null);
+        if(scree == null){
+            System.out.println("nieco je yle");
+            return;
+        }
+        obsadene = bmr.getReservedSeats((int) scree.getId());
+        addTab("1",theater1(seatPane,theater1));
+        File file = new File("C:\\Users\\minar\\Desktop\\VAVA_intellij\\09Client\\res\\platno.png");
+        Image image = new Image(file.toURI().toString());
+        Image.setCache(true);
+        Image.setImage(image);
+        Image.setPreserveRatio(true);
     }
 
     static class Seat extends Group {
