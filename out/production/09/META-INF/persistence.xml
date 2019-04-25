@@ -8,10 +8,18 @@
         <jta-data-source>java:/Postgres</jta-data-source>
 
         <class>entity.Movie</class>
+        <class>entity.City</class>
+        <class>entity.Auditorium</class>
+        <class>entity.Customer</class>
+        <class>entity.Reservation</class>
+        <class>entity.ReservationType</class>
+        <class>entity.Screening</class>
+        <class>entity.Seat</class>
+        <class>entity.SeatReserved</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true"></property>
         </properties>
 
