@@ -16,14 +16,14 @@ import java.io.IOException;
 public class Main extends Application {
 
 
-    private FilmSceneView controller;
-   // private LoginView controller;
+  //  private FilmSceneView controller;
+    private LoginView controller;
   //  private BookingView controller;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewFilmsScene.fxml"));
-       // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginScene.fxml"));
+      //  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewFilmsScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginScene.fxml"));
        // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageBookingsScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
