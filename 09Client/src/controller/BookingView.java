@@ -19,12 +19,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import testuj.BookingManagerRemote;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.File;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,14 +42,12 @@ public class BookingView {
     static List<Integer> seats = new ArrayList<>();
     static List<Integer> obsadene = null;
     List<City> cities = null;
-    List<Date> dates = null;
     List<String> times = new ArrayList<>();
     List<Screening> screenings = new ArrayList<>();
 
     public BorderPane border;
     public ImageView Image;
     public Pane seatPane;
-    // String theater1 = "20x__16x\n.20x__16x\n__18x__14x\n.20x__16x\n20x__16x\n.20x__16x\n20x__16x\n";
     String theater1 = "...16x\n...16x\n.18x\n20x\n20x\n";
   //  String theater2 = "11x_10x_11x\n11x_10x_11x\n11x_10x_11x\n\n11x_10x_11x\n11x_10x_11x\n11x_10x_11x\n";
 
@@ -78,14 +74,10 @@ public class BookingView {
         }
     }
 
-    public void pickedTime(ActionEvent actionEvent) {
-    }
-
     public void selectedCity(ActionEvent actionEvent) {
        City city = (entity.City) cityBox.getSelectionModel().getSelectedItem();
-       screenings = bmr.getDates(movie_id,city.getCityId());
+       screenings = bmr.getDates(movie.getId(),city.getCityId());
        City = true;
-     //  dates = bmr.getDates(movie_id,city.getCityId());
        fillTimes();
     }
 
@@ -93,9 +85,7 @@ public class BookingView {
         this.screening_id = screening_id;
     }
 
-
     private void fillTimes(){
-       // Date date = new Date(datePicker.getValue().format("dd-mm-yyyy"));
         LocalDate ld = datePicker.getValue();
         Calendar c =  Calendar.getInstance();
         c.set(ld.getYear(), ld.getMonthValue(), ld.getDayOfMonth());
@@ -108,12 +98,10 @@ public class BookingView {
             }
         }
         timeDropDownList.setItems(FXCollections.observableArrayList(times));
-
-
     }
 
-
     public void init(){
+        movie_title.setText(movie.getTitle());
         datePicker.setValue(LocalDate.now());
         try {
             Context ctx = new InitialContext();
@@ -124,18 +112,6 @@ public class BookingView {
 
         cities = bmr.getCities();
         cityBox.setItems(FXCollections.observableArrayList(cities));
-
-        /*
-        obsadene = bmr.getReservedSeats(screening_id);
-
-        addTab("1",theater1(seatPane,theater1));
-        File file = new File("C:\\Users\\minar\\Desktop\\VAVA_intellij\\09Client\\res\\platno.png");
-        Image image = new Image(file.toURI().toString());
-        Image.setCache(true);
-        Image.setImage(image);
-        Image.setPreserveRatio(true);
-*/
-
     }
 
     public void setMovie(Movie movie) {
@@ -143,7 +119,6 @@ public class BookingView {
     }
 
     public void search(ActionEvent actionEvent) {
-
         seats.clear();
         Screening scree = screenings.stream().filter(e -> e.getScreeningStart().getDate() == selected_day)
                 .filter(t -> ((String)timeDropDownList.getSelectionModel().getSelectedItem()).equals(t.getScreeningStart().getHours() + ":" + t.getScreeningStart().getMinutes()))

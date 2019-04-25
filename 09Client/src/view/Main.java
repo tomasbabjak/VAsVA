@@ -1,6 +1,7 @@
 package view;
 
 import controller.BookingView;
+import controller.FilmSceneView;
 import controller.LoginView;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -15,19 +16,19 @@ import java.io.IOException;
 public class Main extends Application {
 
 
-   // private FilmSceneView controller;
+    private FilmSceneView controller;
    // private LoginView controller;
-    private BookingView controller;
+  //  private BookingView controller;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-       // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewFilmsScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewFilmsScene.fxml"));
        // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginScene.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageBookingsScene.fxml"));
+       // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageBookingsScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
-        controller.setScreening_id(1);
-        controller.init();
+      //  controller.setScreening_id(1);
+      //  controller.init();
 
         primaryStage.setTitle("Title");
         primaryStage.setScene(new Scene(parent));
