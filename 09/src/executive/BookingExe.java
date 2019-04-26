@@ -63,6 +63,8 @@ public class BookingExe {
             return null;
         }
 
+        QrGenerator.getQRCodeImage("ahoj");
+
         MailSender mailSender = new MailSender();
         mailSender.send("dannyel.minarik@gmail.com","Hello","Hello World");
 

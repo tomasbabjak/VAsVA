@@ -62,7 +62,7 @@ public class SelectedFilmView {
 
     public void buildScene(Movie movie, Image image){
         this.movie = movie;
-        Integer.toString(movie.getPremiere_date().getDate());
+//        Integer.toString(movie.getPremiere_date().getDate());
         title.setText(movie.getTitle());
         description.setText(movie.getDescription());
 //        Date date = new Date();
