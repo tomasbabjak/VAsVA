@@ -18,6 +18,7 @@ public class SceneCreator {
     RegistrationView rv;
     LoginView lv;
     UserSceneView usv;
+    static Customer currentCustomer;
 
     public void setAncestorRV(RegistrationView rv){this.rv = rv;}
     public void setAncestorLV(LoginView lv){this.lv = lv;}
@@ -71,5 +72,13 @@ public class SceneCreator {
         stage.setTitle("Title");
         stage.setScene(new Scene(parent));
         stage.show();
+    }
+
+
+    public static Customer getCurrentCustomer() {
+        return currentCustomer;
+    }
+    public static void setCurrentCustomer(Customer currentCustomer) {
+        SceneCreator.currentCustomer = currentCustomer;
     }
 }

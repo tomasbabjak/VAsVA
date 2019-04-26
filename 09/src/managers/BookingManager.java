@@ -7,7 +7,7 @@ import testuj.BookingManagerRemote;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.util.Date;
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 @Stateless
@@ -39,5 +39,10 @@ public class BookingManager implements BookingManagerRemote {
         List<Screening> dates = bookingExe.getDates(movie_id,cityId);
 
         return dates;
+    }
+
+    @Override
+    public byte[] setReservation(long customerId, long screeningId, boolean paid, List<Integer> seats) {
+        return bookingExe.setReservation(customerId, screeningId, paid, seats);
     }
 }

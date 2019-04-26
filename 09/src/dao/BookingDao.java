@@ -1,13 +1,11 @@
 package dao;
 
-import entity.City;
-import entity.Screening;
+import entity.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.sql.Timestamp;
 import java.util.List;
 
 @Stateless
@@ -18,8 +16,7 @@ public class BookingDao {
 
     public List<Integer> getSeats(int screaning){
         System.out.println("Screnenig je " + screaning);
-        String hql = "SELECT S2.number from SeatReserved S " +
-                "join Seat S2 on S.seat.id = S2.id " +
+        String hql = "SELECT S.seatNumber from SeatReserved S " +
                 "where S.screening.id = :id";
         Query query = entityManager.createQuery(hql);
         query.setParameter("id", (long) screaning);
@@ -48,5 +45,28 @@ public class BookingDao {
         dates = query.getResultList();
         System.out.println(dates);
         return dates;
+    }
+
+    public long setReservation(long customerId, long screeningId, boolean paid) {
+        Reservation reservation = new Reservation();
+        reservation.setActive(true);
+        Customer customer = new Customer();
+        customer.setId(customerId);
+        reservation.setCustomer(customer);
+        Screening screening = new Screening();
+        screening.setId(screeningId);
+        reservation.setScreening(screening);
+        reservation.setPaid(paid);
+        entityManager.persist(reservation);
+        System.out.println("toto je id:" + reservation.getId());
+        return reservation.getId();
+    }
+
+    public void setResSeats(Reservation res, Screening scr, int seat) {
+            SeatReserved reserved = new SeatReserved();
+            reserved.setReservation(res);
+            reserved.setScreening(scr);
+            reserved.setSeatNumber(seat);
+            entityManager.persist(reserved);
     }
 }

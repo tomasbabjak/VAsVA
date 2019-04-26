@@ -11,8 +11,7 @@ public class SeatReserved {
   @Id
   @GeneratedValue
   private long id;
-  @ManyToOne
-  private Seat seat;
+  private int seatNumber;
   @ManyToOne
   private Reservation reservation;
   @ManyToOne
@@ -27,12 +26,12 @@ public class SeatReserved {
     this.id = id;
   }
 
-  public Seat getSeat() {
-    return seat;
+  public int getSeatNumber() {
+    return seatNumber;
   }
 
-  public void setSeat(Seat seat) {
-    this.seat = seat;
+  public void setSeatNumber(int seatNumber) {
+    this.seatNumber = seatNumber;
   }
 
   public Reservation getReservation() {

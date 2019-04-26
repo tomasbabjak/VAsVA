@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookPayView">
+    <children>
+        <AnchorPane prefHeight="37.0" prefWidth="702.0">
+            <children>
+                <MenuBar prefHeight="35.0" prefWidth="700.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
+                <Text fill="WHITE" layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="Bookings" />
+                <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="639.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="57.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </AnchorPane>
+      <Label fx:id="Movie_title" layoutX="259.0" layoutY="37.0" text="Movie">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="186.0" text="Date:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="223.0" text="Time:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="259.0" text="Seats:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="302.0" text="Auditorium:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="LDate" layoutX="148.0" layoutY="188.0" text="LabelDate">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="LTime" layoutX="147.0" layoutY="225.0" text="LabelTime">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="LSeat" layoutX="147.0" layoutY="261.0" text="LabelSeats">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="LAudi" layoutX="149.0" layoutY="304.0" text="LabelAudi">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="340.0" text="Price:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="LPrice" layoutX="148.0" layoutY="342.0" text="LabelPrice">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image_view" fitHeight="150.0" fitWidth="150.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <Separator layoutX="354.0" layoutY="37.0" orientation="VERTICAL" prefHeight="364.0" prefWidth="8.0" />
+      <Button fx:id="ReserveB" layoutX="548.0" layoutY="340.0" mnemonicParsing="false" onAction="#reserve" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #353238;" text="Only Reserve" textFill="WHITE" />
+      <Button fx:id="PayB" layoutX="375.0" layoutY="340.0" mnemonicParsing="false" onAction="#payy" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #353238;" text="Pay" textFill="WHITE" />
+      <Label fx:id="cardL" layoutX="375.0" layoutY="78.0" text="Card Number:" visible="false" />
+      <TextField fx:id="cardF" layoutX="464.0" layoutY="74.0" prefHeight="25.0" prefWidth="194.0" visible="false" />
+      <Label fx:id="expL" layoutX="375.0" layoutY="112.0" text="Expire Date:" visible="false" />
+      <TextField fx:id="expF1" layoutX="464.0" layoutY="108.0" prefHeight="25.0" prefWidth="46.0" visible="false" />
+      <TextField fx:id="expF2" layoutX="538.0" layoutY="108.0" prefHeight="25.0" prefWidth="46.0" visible="false" />
+      <Label fx:id="expF3" layoutX="519.0" layoutY="107.0" text="/" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="CodeL" layoutX="375.0" layoutY="141.0" text="Code:" visible="false" />
+      <TextField fx:id="CodeF" layoutX="464.0" layoutY="137.0" prefHeight="25.0" prefWidth="46.0" visible="false" />
+      <Button fx:id="ConfirmB" layoutX="375.0" layoutY="186.0" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #353238;" text="Confirm" textFill="WHITE" visible="false" />
+    </children>
+</AnchorPane>

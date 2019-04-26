@@ -7,8 +7,11 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,11 +21,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import testuj.BookingManagerRemote;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,6 +38,7 @@ import java.util.List;
 public class BookingView {
 
     int screening_id;
+    Screening selectedScree = null;
     Movie movie;
     long movie_id = 2;
     boolean City = false;
@@ -63,8 +70,24 @@ public class BookingView {
     public void backToPrevScene(ActionEvent actionEvent) {
     }
 
-    public void bookSeat(MouseEvent mouseEvent) {
+    public void bookSeat(MouseEvent mouseEvent) throws IOException {
         System.out.println(seats.toString());
+        if(seats.size() > 0) {
+            BookPayView controller;
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/BookOrPayScene.fxml"));
+            Parent parent = fxmlLoader.load();
+            controller = fxmlLoader.getController();
+            //  controller.setScreening_id(1);
+            controller.init(movie,selectedScree,seats,bmr);
+
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Title");
+            primaryStage.setScene(new Scene(parent));
+            primaryStage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.show();
+
+        }
+
     }
 
 
@@ -109,7 +132,6 @@ public class BookingView {
         }catch (NamingException e){
             e.printStackTrace();
         }
-
         cities = bmr.getCities();
         cityBox.setItems(FXCollections.observableArrayList(cities));
     }
@@ -120,15 +142,15 @@ public class BookingView {
 
     public void search(ActionEvent actionEvent) {
         seats.clear();
-        Screening scree = screenings.stream().filter(e -> e.getScreeningStart().getDate() == selected_day)
+        selectedScree = screenings.stream().filter(e -> e.getScreeningStart().getDate() == selected_day)
                 .filter(t -> ((String)timeDropDownList.getSelectionModel().getSelectedItem()).equals(t.getScreeningStart().getHours() + ":" + t.getScreeningStart().getMinutes()))
                 .findFirst()
                 .orElse(null);
-        if(scree == null){
+        if(selectedScree == null){
             System.out.println("nieco je yle");
             return;
         }
-        obsadene = bmr.getReservedSeats((int) scree.getId());
+        obsadene = bmr.getReservedSeats((int) selectedScree.getId());
         addTab("1",theater1(seatPane,theater1));
         File file = new File("C:\\Users\\minar\\Desktop\\VAVA_intellij\\09Client\\res\\platno.png");
         Image image = new Image(file.toURI().toString());
@@ -148,7 +170,7 @@ public class BookingView {
             myNo = no;
             // Circle pillow = new Circle(15);
             Rectangle pillow = new Rectangle(30,40);
-            if(obsadene.contains((long) no)) {
+            if(obsadene.contains(no)) {
                 pillow.setFill(reservedColor);
                 pillow.setId(String.valueOf(-no));
             }
@@ -161,7 +183,7 @@ public class BookingView {
             getChildren().add(pillow);
 
             Text lable = new Text(""+no);
-            lable.setFont(lable.getFont().font(15));
+            lable.setFont(lable.getFont().font(12));
             lable.setTextAlignment(TextAlignment.CENTER);
             //    lable.setBoundsType(TextBoundsType.VISUAL);
             lable.setTextOrigin(VPos.CENTER);

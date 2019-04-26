@@ -45,6 +45,7 @@ public class LoginView {
             SceneCreator sc = new SceneCreator();
             try {
                 sc.launchUserScene(user);
+                SceneCreator.setCurrentCustomer(user);
                 ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
                 e.printStackTrace();

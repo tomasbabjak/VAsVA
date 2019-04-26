@@ -5,3 +5,5 @@ out/
 *.jar
 .settings/
 *.iml
+*.log
+*.pdf
