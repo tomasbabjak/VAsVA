@@ -26,36 +26,46 @@
          <!--   <Image url="@../res/images/backgroundImages/DefaultFilmPoster.png" /> -->
          </image>
       </ImageView>
-      <Text fx:id="title" fill="WHITE" layoutX="277.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOVIE TITLE" wrappingWidth="353.2851527631283">
+      <Text fx:id="title" fill="WHITE" layoutX="269.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOVIE TITLE" wrappingWidth="353.2851527631283">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fx:id="description" fill="WHITE" layoutX="279.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="353.28515625">
+      <Text fx:id="description" fill="WHITE" layoutX="262.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="353.28515625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="269.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From:">
+      <Text fill="WHITE" layoutX="262.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premiere date:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="startDate" fill="WHITE" layoutX="338.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dd-mm-yyyy">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="266.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Times:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="time" fill="WHITE" layoutX="338.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HH:mm">
+      <Text fx:id="startDate" fill="WHITE" layoutX="388.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dd-mm-yyyy">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
       <Button fx:id="bookButton" layoutX="552.0" layoutY="337.0" mnemonicParsing="false" onAction="#goToBookingScene" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: white;" text="Book Now" />
+      <Text fx:id="director" fill="WHITE" layoutX="338.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Director" wrappingWidth="353.28515625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="cast" fill="WHITE" layoutX="338.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cast" wrappingWidth="353.28515625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="262.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Director:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="262.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cast:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

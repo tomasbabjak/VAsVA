@@ -18,7 +18,7 @@ public class Movie implements Serializable {
   private String description;
   private long durationMin;
   private byte[] image;
-  private java.sql.Timestamp premiere_date;
+  private Timestamp premiere_date;
 
   public Movie() {
   }
