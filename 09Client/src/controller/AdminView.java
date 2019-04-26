@@ -2,25 +2,18 @@ package controller;
 
 import entity.Customer;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import javafx.scene.control.Label;
 import java.io.IOException;
 
-public class UserSceneView {
-
-    Customer c;
-    LoginView ancestor;
-    private Stage stage;
-    SceneCreator sceneCreator;
+public class AdminView {
 
     public Label lastNameLabel;
     public Label firstNameLabel;
     public Label login;
-
-    public void setAncestor(SceneCreator sceneCreator) {
-
-    }
+    Customer c;
+    private Stage stage;
 
     public void setStage(Stage stage) {
         login.setText(c.getUsername());
@@ -33,16 +26,16 @@ public class UserSceneView {
         this.c = c;
     }
 
-    public void editInfoClick(ActionEvent actionEvent) {
+    public void sendEmailClick(ActionEvent actionEvent) {
     }
 
-    public void sendEmailClick(ActionEvent actionEvent) {
+    public void editInfoClick(ActionEvent actionEvent) {
     }
 
     public void manageMoviesClick(ActionEvent actionEvent) {
         SceneCreator sc = new SceneCreator();
         try {
-            sc.launchSceneMovies(c);
+            sc.launchManageFilmScene(c);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,10 +43,9 @@ public class UserSceneView {
     }
 
     public void manageBookingsClick(ActionEvent actionEvent) {
-
     }
 
-    public void logOutClick(ActionEvent actionEvent){
+    public void logOutClick(ActionEvent actionEvent) {
         SceneCreator sc = new SceneCreator();
         try {
             sc.launchLogInScene();

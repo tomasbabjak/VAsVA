@@ -46,6 +46,8 @@ public class LoginView {
             try {
                 sc.launchUserScene(user);
                 SceneCreator.setCurrentCustomer(user);
+                if(user.isAdmin()) sc.launchAdminScene(user);
+                else sc.launchUserScene(user);
                 ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
                 e.printStackTrace();

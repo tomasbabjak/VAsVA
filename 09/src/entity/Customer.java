@@ -11,12 +11,20 @@ public class Customer implements Serializable {
   @Id
   @GeneratedValue
   private long id;
+  private boolean admin;
   private String username;
   private String password;
   private String firstName;
   private String lastName;
   private String email;
 
+  public boolean isAdmin() {
+    return admin;
+  }
+
+  public void setAdmin(boolean admin) {
+    this.admin = admin;
+  }
 
   public long getId() {
     return id;
@@ -26,7 +34,6 @@ public class Customer implements Serializable {
     this.id = id;
   }
 
-
   public String getUsername() {
     return username;
   }
@@ -34,7 +41,6 @@ public class Customer implements Serializable {
   public void setUsername(String username) {
     this.username = username;
   }
-
 
   public String getPassword() {
     return password;

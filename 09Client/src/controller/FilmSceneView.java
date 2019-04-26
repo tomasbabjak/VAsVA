@@ -1,5 +1,6 @@
 package controller;
 
+import entity.Customer;
 import entity.Movie;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -48,7 +49,21 @@ public class FilmSceneView{
     List<Movie> movies = null;
     HBox hb = new HBox();
 
+    Customer c;
+
+    public void setUser(Customer c) {
+        this.c = c;
+    }
+
     public void backToPrevScene(ActionEvent actionEvent) {
+        SceneCreator sc = new SceneCreator();
+        try {
+            sc.launchUserScene(c);
+            ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -83,8 +98,6 @@ public class FilmSceneView{
                     }
                 }
             }
-
-
     }
 
     private void addImage(int index, int colIndex, int rowIndex) {
@@ -109,7 +122,8 @@ public class FilmSceneView{
                     System.out.println("Wroooooong!!!!");
                 }
                 SceneCreator sc = new SceneCreator();
-                sc.launchSceneSelectedFilm(movie, SwingFXUtils.toFXImage(convertImage(movie.getImage()), null));
+                sc.launchSceneSelectedFilm(c, movie, SwingFXUtils.toFXImage(convertImage(movie.getImage()), null));
+                ((javafx.scene.Node) (e.getSource())).getScene().getWindow().hide();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
