@@ -30,8 +30,8 @@ public class SceneCreator {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ViewSelectedFilmScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
-        controller.buildScene(movie,image);
         controller.setCustomer(c);
+        controller.buildScene(movie,image);
         stage.setTitle("Title");
         stage.setScene(new Scene(parent));
         stage.show();
@@ -119,5 +119,17 @@ public class SceneCreator {
         stage.show();
     }
 
+    public void launchManageScreeningScene(Customer c, Movie movie) throws IOException {
+        ManageScreeningView controller;
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageScreeningScene.fxml"));
+        Parent parent = fxmlLoader.load();
+        controller = fxmlLoader.getController();
+        controller.setUser(c);
+        controller.setMovie(movie);
+        stage.setTitle("Title");
+        stage.setScene(new Scene(parent));
+        stage.show();
+    }
 
 }

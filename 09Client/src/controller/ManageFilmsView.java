@@ -90,9 +90,7 @@ public class ManageFilmsView {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
-
     }
 
     public void updateDateAndTime(ActionEvent actionEvent) {

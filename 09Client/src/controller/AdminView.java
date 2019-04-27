@@ -43,6 +43,13 @@ public class AdminView {
     }
 
     public void manageBookingsClick(ActionEvent actionEvent) {
+        SceneCreator sc = new SceneCreator();
+        try {
+            sc.launchSceneMovies(c);
+            ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void logOutClick(ActionEvent actionEvent) {

@@ -60,7 +60,6 @@ public class BookingView {
 
     private static final String JNDI = "ejb:AE09/09WAR/BookingManager!testuj.BookingManagerRemote";
 
-
     public ComboBox cityBox;
     public TextField movie_title;
     public Button backButton;

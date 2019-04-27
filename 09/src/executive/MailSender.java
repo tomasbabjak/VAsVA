@@ -1,6 +1,6 @@
 package executive;
 
-import javax.annotation.Resource;
+//import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
