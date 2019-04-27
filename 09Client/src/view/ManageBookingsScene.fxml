@@ -34,7 +34,7 @@
          <children>
             <MenuBar prefHeight="35.0" prefWidth="900.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
             <Text fill="WHITE" layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="Bookings" />
-            <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="639.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="57.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
+            <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="826.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="66.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
                <font>
                   <Font size="18.0" />
                </font>

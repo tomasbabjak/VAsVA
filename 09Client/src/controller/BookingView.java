@@ -67,7 +67,10 @@ public class BookingView {
     public DatePicker datePicker;
     public ComboBox timeDropDownList;
 
-    public void backToPrevScene(ActionEvent actionEvent) {
+    public void backToPrevScene(ActionEvent actionEvent) throws IOException {
+        SceneCreator sc = new SceneCreator();
+        sc.launchSceneMovies(SceneCreator.getCurrentCustomer());
+        ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void bookSeat(MouseEvent mouseEvent) throws IOException {

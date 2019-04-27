@@ -57,6 +57,7 @@ public class SelectedFilmView {
         primaryStage.setScene(new Scene(parent));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
+        ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
 

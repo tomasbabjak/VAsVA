@@ -47,6 +47,7 @@ public class BookPayView {
     //
 
     public void backToPrevScene(ActionEvent actionEvent) {
+        ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void reserve(ActionEvent actionEvent) {
