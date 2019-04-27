@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageScreeningView">
+
+    <children>
+        <MenuBar prefHeight="35.0" prefWidth="702.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
+        <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="639.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="57.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
+            <font>
+                <Font size="18.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+      <Text layoutX="400.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose date:" />
+      <Text layoutX="562.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose time:" />
+        <DatePicker fx:id="datePicker" layoutX="372.0" layoutY="144.0" onAction="#picked_date" prefHeight="27.0" prefWidth="141.0" />
+        <ComboBox fx:id="timeDropDownListHours" layoutX="536.0" layoutY="144.0" prefHeight="28.0" prefWidth="70.0" />
+        <ComboBox fx:id="timeDropDownListMinutes" layoutX="619.0" layoutY="144.0" prefHeight="28.0" prefWidth="70.0" />
+        <Button layoutX="530.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#createScreening" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Add Screening" textFill="WHITE" />
+        <TextField fx:id="movie_title" alignment="CENTER" editable="false" layoutX="14.0" layoutY="56.0" text="Movie title" />
+        <ComboBox fx:id="cityBox" layoutX="14.0" layoutY="145.0" onAction="#selectedCity" prefWidth="150.0" />
+        <Label layoutX="77.0" layoutY="111.0" text="City" />
+      <Label layoutX="227.0" layoutY="111.0" text="Auditorium" />
+      <ComboBox fx:id="auditoriumBox" layoutX="189.0" layoutY="145.0" onAction="#selectedAuditorium" prefWidth="150.0" />
+      <Label layoutX="610.0" layoutY="150.0" text=":" />
+
+    </children>
+</AnchorPane>

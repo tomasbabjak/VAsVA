@@ -1,6 +1,5 @@
 package executive;
 
-
 import javax.activation.DataHandler;
 import javax.ejb.Stateless;
 import javax.mail.*;

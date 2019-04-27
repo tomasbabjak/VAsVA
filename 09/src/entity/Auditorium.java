@@ -1,9 +1,10 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Auditorium {
+public class Auditorium implements Serializable {
 
   @Id
   @GeneratedValue
@@ -13,6 +14,10 @@ public class Auditorium {
   @ManyToOne
   private City city;
 
+  @Override
+  public String toString() {
+    return name;
+  }
 
   public long getId() {
     return id;

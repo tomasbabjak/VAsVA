@@ -58,7 +58,12 @@ public class FilmSceneView{
     public void backToPrevScene(ActionEvent actionEvent) {
         SceneCreator sc = new SceneCreator();
         try {
-            sc.launchUserScene(c);
+            if(c.isAdmin()){
+                sc.launchAdminScene(c);
+            }
+            else {
+                sc.launchUserScene(c);
+            }
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();

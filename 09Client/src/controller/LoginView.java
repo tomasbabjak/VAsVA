@@ -44,7 +44,6 @@ public class LoginView {
         if(user != null){
             SceneCreator sc = new SceneCreator();
             try {
-                sc.launchUserScene(user);
                 SceneCreator.setCurrentCustomer(user);
                 if(user.isAdmin()) sc.launchAdminScene(user);
                 else sc.launchUserScene(user);
