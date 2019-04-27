@@ -18,6 +18,8 @@ public class LoginView {
 
     private static final String JNDI = "ejb:AE09/09WAR/CustomerManager!testuj.CustomerManagerRemote";
 
+    CustomerManagerRemote cusRemote = null;
+
     public Label exitButt;
     public TextField usernameBox;
     public PasswordField passwordBox;
@@ -33,13 +35,8 @@ public class LoginView {
 
         Customer user = null;
 
-        try {
-            Context ctx = new InitialContext();
-            CustomerManagerRemote cusRemote = (CustomerManagerRemote) ctx.lookup(JNDI);
             user = cusRemote.logIn(usernameBox.getText(),passwordBox.getText());
-        }catch (NamingException e){
-            e.printStackTrace();
-        }
+
 
         if(user != null){
             SceneCreator sc = new SceneCreator();
@@ -68,6 +65,15 @@ public class LoginView {
             sc.launchSceneRegistration();
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void initialize(){
+        try {
+            Context ctx = new InitialContext();
+            cusRemote = (CustomerManagerRemote) ctx.lookup(JNDI);
+        }catch (NamingException e){
             e.printStackTrace();
         }
     }

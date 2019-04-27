@@ -16,6 +16,7 @@ public class dbtest implements dbtestRemote {
     @PersistenceContext(unitName = "09")
     private EntityManager entityManager;
 
+
     public int otestuj(String input){
         String sql = "SELECT M.id from Movie M where M.title = :title";
 

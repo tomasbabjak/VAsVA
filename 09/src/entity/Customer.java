@@ -14,6 +14,7 @@ public class Customer implements Serializable {
   private boolean admin;
   private String username;
   private String password;
+  private String salt;
   private String firstName;
   private String lastName;
   private String email;
@@ -72,5 +73,13 @@ public class Customer implements Serializable {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public String getSalt() {
+    return salt;
+  }
+
+  public void setSalt(String salt) {
+    this.salt = salt;
   }
 }
