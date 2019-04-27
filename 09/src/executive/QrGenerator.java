@@ -21,14 +21,14 @@ public class QrGenerator {
         byte[] pngData = null;
         try {
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
-            BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 20, 20);
+            BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 100, 100);
             ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
             MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
 
-            Path path = FileSystems.getDefault().getPath(QR_CODE_IMAGE_PATH);
-            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+//            Path path = FileSystems.getDefault().getPath(QR_CODE_IMAGE_PATH);
+//            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
 
-            // pngData = pngOutputStream.toByteArray();
+            pngData = pngOutputStream.toByteArray();
         } catch (WriterException e) {
             e.printStackTrace();
         } catch (IOException e) {

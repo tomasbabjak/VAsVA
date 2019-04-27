@@ -69,4 +69,21 @@ public class BookingDao {
             reserved.setSeatNumber(seat);
             entityManager.persist(reserved);
     }
+
+    public Movie getMovieByScreening(long screeningId) {
+        String hql = "SELECT M from Screening S " +
+                "join Movie M on M.id = S.movie.id " +
+                "where S.id = :screeningId";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("screeningId",screeningId);
+        return (Movie) query.getSingleResult();
+    }
+
+    public Screening getScreening(long screeningId) {
+        String hql = "SELECT S from Screening S " +
+                "where S.id = :screeningId";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("screeningId",screeningId);
+        return (Screening) query.getSingleResult();
+    }
 }

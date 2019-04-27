@@ -2,6 +2,7 @@ package executive;
 
 import dao.BookingDao;
 import entity.City;
+import entity.Movie;
 import entity.Reservation;
 import entity.Screening;
 
@@ -46,9 +47,12 @@ public class BookingExe {
     }
 
     public byte[] setReservation(long customerId, long screeningId, boolean paid, List<Integer> seats) {
+        byte[] imageB = null;
+        byte[] pdf = null;
+        long resId;
 
         try {
-            long resId = dao.setReservation(customerId, screeningId, paid);
+            resId = dao.setReservation(customerId, screeningId, paid);
 
             Reservation res = new Reservation();
             res.setId(resId);
@@ -63,12 +67,17 @@ public class BookingExe {
             return null;
         }
 
-        QrGenerator.getQRCodeImage("ahoj");
+        Movie movie = dao.getMovieByScreening(screeningId);
+        Screening screening = dao.getScreening(screeningId);
+
+        imageB = QrGenerator.getQRCodeImage(String.valueOf(resId));
+        pdf = PdfCreator.create(imageB,movie,screening,seats);
+
 
         MailSender mailSender = new MailSender();
-        mailSender.send("dannyel.minarik@gmail.com","Hello","Hello World");
+        mailSender.send("dannyel.minarik@gmail.com","CINEMA TICKET","Thank you for visiting",pdf,imageB);
 
-        return PdfCreator.create();
+        return pdf;
 
         //return null;
     }

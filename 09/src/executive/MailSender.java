@@ -1,10 +1,14 @@
 package executive;
 
 
+import javax.activation.DataHandler;
 import javax.ejb.Stateless;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.util.ByteArrayDataSource;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -12,7 +16,7 @@ import java.util.Properties;
 @Stateless
 public class MailSender {
 
-    public void send(String addresses, String topic, String textMessage) {
+    public void send(String addresses, String topic, String textMessage, byte[] pdf, byte[] image) {
         Properties properties = new Properties();
         String fileName = System.getProperty("jboss.server.config.dir") + "\\my.properties";
         try{
@@ -37,7 +41,23 @@ public class MailSender {
             message.setFrom(from);
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(addresses));
             message.setSubject(topic);
-            message.setText(textMessage);
+            BodyPart bodyPart = new MimeBodyPart();
+            bodyPart.setText(textMessage);
+
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(bodyPart);
+
+            //
+            bodyPart = new MimeBodyPart();
+            ByteArrayDataSource bds = new ByteArrayDataSource(pdf,"application/pdf");
+            bodyPart.setDataHandler(new DataHandler(bds));
+            bodyPart.setFileName("ticket.pdf");
+            multipart.addBodyPart(bodyPart);
+//            ByteArrayDataSource bds2 = new ByteArrayDataSource(image,"/qrcode.png");
+//            message.setDataHandler(new DataHandler(bds2));
+//            message.setFileName(bds2.getName());
+
+            message.setContent(multipart);
             Transport.send(message);
             System.out.println("Sent...");
         } catch (MessagingException e) {

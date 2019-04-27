@@ -83,7 +83,7 @@ public class BookPayView {
             showAlert("We are really sorry, but someone fucked it up :( Try again, later");
         }
         else{
-            showSucces();
+            showSucces(actionEvent);
         }
 
 
@@ -124,7 +124,7 @@ public class BookPayView {
         alert.setContentText("Please, try again");
         alert.showAndWait();
     }
-    private void showSucces() {
+    private void showSucces(ActionEvent act) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Reservation Succes");
         alert.setHeaderText("Thank you from your Reservation. Ticket was sent to your email.");
@@ -155,6 +155,7 @@ public class BookPayView {
         } else{
             //close
         }
+        ((javafx.scene.Node) (act.getSource())).getScene().getWindow().hide();
     }
 
 

@@ -87,8 +87,8 @@ public class BookingView {
             primaryStage.show();
 
         }
-
     }
+
 
 
     public void picked_date(ActionEvent actionEvent) {
