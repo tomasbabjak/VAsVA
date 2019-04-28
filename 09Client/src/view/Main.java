@@ -1,7 +1,5 @@
 package view;
 
-import controller.BookingView;
-import controller.FilmSceneView;
 import controller.LoginView;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -12,9 +10,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class Main extends Application {
 
+    private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
   //  private FilmSceneView controller;
     private LoginView controller;

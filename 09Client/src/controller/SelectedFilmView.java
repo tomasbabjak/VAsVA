@@ -7,18 +7,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SelectedFilmView {
+
+    private static final Logger LOG = Logger.getLogger(SelectedFilmView.class.getName());
+
     public Button backButton;
     public ImageView selectedFilmPoster;
     public Text description;
@@ -47,7 +50,7 @@ public class SelectedFilmView {
             sc.launchSceneMovies(c,lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+           LOG.log(Level.SEVERE,"Back Scene opening",e);
         }
     }
 

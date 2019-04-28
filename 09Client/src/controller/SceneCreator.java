@@ -3,17 +3,16 @@ package controller;
 import entity.Customer;
 import entity.Movie;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import view.Main;
-
-import java.awt.*;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class SceneCreator {
+
+    private static final Logger LOG = Logger.getLogger(SceneCreator.class.getName());
 
     RegistrationView rv;
     LoginView lv;

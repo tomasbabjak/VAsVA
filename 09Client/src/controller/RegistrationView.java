@@ -2,21 +2,21 @@ package controller;
 
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.application.Platform;
 import testuj.CustomerManagerRemote;
 import entity.Customer;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-
 public class RegistrationView {
+
+    private static final Logger LOG = Logger.getLogger(RegistrationView.class.getName());
 
     private static final String JNDI = "ejb:AE09/09WAR/CustomerManager!testuj.CustomerManagerRemote";
 
@@ -72,14 +72,16 @@ public class RegistrationView {
             alert.setContentText("Passwords are different.");
             alert.showAndWait();
         }else {
+            LOG.entering(this.getClass().getName(),"enetering initialContext, registration");
             try {
                 Context ctx = new InitialContext();
                 CustomerManagerRemote cusRemote = (CustomerManagerRemote) ctx.lookup(JNDI);
                 cusRemote.registrate(emil.getText(), fname.getText(), lname.getText(), login.getText(), pass.getText());
                 user = cusRemote.logIn(login.getText(),pass.getText());
             } catch (NamingException e) {
-                e.printStackTrace();
+                LOG.log(Level.SEVERE,"Naming Exception registration",e);
             }
+            LOG.exiting(this.getClass().getName(),"exiting registration");
 
             SceneCreator sc = new SceneCreator();
             try {
@@ -87,7 +89,7 @@ public class RegistrationView {
                 sc.launchUserScene(user,lan);
                 ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.log(Level.SEVERE,"IO Exception");
             }
         }
     }

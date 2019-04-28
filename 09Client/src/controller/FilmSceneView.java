@@ -5,12 +5,10 @@ import entity.Movie;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,24 +16,23 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import testuj.dbtestRemote;
-import view.Main;
-
 import javax.imageio.ImageIO;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class FilmSceneView{
+
+    private static final Logger LOG = Logger.getLogger(FilmSceneView.class.getName());
 
     private static final String JNDI = "ejb:AE09/09WAR/dbtest!testuj.dbtestRemote";
 
@@ -73,7 +70,7 @@ public class FilmSceneView{
             }
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"openig back scene faild");
         }
 
     }
@@ -88,7 +85,7 @@ public class FilmSceneView{
             dbtestRemote dbtestRemote = (dbtestRemote) ctx.lookup(JNDI);
             movies = dbtestRemote.getMovies();
         }catch (NamingException e){
-            e.printStackTrace();
+           LOG.log(Level.SEVERE,"Initial context faild",e);
         }
 
         backButton.setText(rb.getString("backButton"));
@@ -136,13 +133,13 @@ public class FilmSceneView{
             try {
                 Movie movie = movies.stream().filter(i -> i.getId() == selectedId).findFirst().orElse(null);
                 if(movie == null){
-                    System.out.println("Wroooooong!!!!");
+                    LOG.log(Level.WARNING,"movie was not found by poster");
                 }
                 SceneCreator sc = new SceneCreator();
                 sc.launchSceneSelectedFilm(lan, c, movie, SwingFXUtils.toFXImage(convertImage(movie.getImage()), null));
                 ((javafx.scene.Node) (e.getSource())).getScene().getWindow().hide();
             } catch (IOException ex) {
-                ex.printStackTrace();
+                LOG.log(Level.WARNING,"IO Exception");
             }
         });
 
@@ -154,7 +151,7 @@ public class FilmSceneView{
         try {
             return ImageIO.read(in);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.WARNING,"image read faild");
         }
         return null;
     }

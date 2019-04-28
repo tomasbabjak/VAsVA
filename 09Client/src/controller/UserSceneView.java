@@ -6,15 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-
 import javafx.scene.control.Label;
-import org.apache.commons.collections.BagUtils;
-
 import java.io.IOException;
+import java.util.logging.Logger;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class UserSceneView {
+
+    private static final Logger LOG = Logger.getLogger(UserSceneView.class.getName());
 
     Customer c;
     LoginView ancestor;
@@ -78,12 +78,11 @@ public class UserSceneView {
             sc.launchSceneMovies(c,lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.severe("opening movies scene");
         }
     }
 
     public void manageBookingsClick(ActionEvent actionEvent) {
-
     }
 
     public void logOutClick(ActionEvent actionEvent){
@@ -92,7 +91,7 @@ public class UserSceneView {
             sc.launchLogInScene(lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.severe("opening logout scene");
         }
     }
 }

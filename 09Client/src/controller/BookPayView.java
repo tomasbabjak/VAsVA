@@ -10,16 +10,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import property.PropertyReader;
 import testuj.BookingManagerRemote;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.ResourceBundle;
 
 public class BookPayView {
+
+    private static final Logger LOG = Logger.getLogger(BookPayView.class.getName());
+
     Movie movie;
     Screening screening;
     Customer customer;
@@ -59,6 +63,18 @@ public class BookPayView {
     }
 
     public void reserve(ActionEvent actionEvent) {
+
+        LOG.entering(this.getClass().getName(),"entering booking");
+        byteFile = bmr.setReservation(customer.getId(),screening.getId(),false,seats);
+        if(byteFile == null){
+            LOG.log(Level.SEVERE,"not able to crete pdf");
+            showAlert("We are really sorry, but someone fucked it up :( Try again, later");
+        }
+        else{
+            showSucces(actionEvent);
+        }
+        LOG.exiting(this.getClass().getName(),"exiting booking");
+
     }
 
     public void payy(ActionEvent actionEvent) {
@@ -82,19 +98,21 @@ public class BookPayView {
             Integer.parseInt(expF2.getText());
             Integer.parseInt(CodeF.getText());
         }catch (NumberFormatException nfe){
+            LOG.log(Level.WARNING,"wrong card numbers");
             showAlert("Wrong card data. Please check your card number.");
             return;
         }
 
-
+        LOG.entering(this.getClass().getName(),"entering booking");
         byteFile = bmr.setReservation(customer.getId(),screening.getId(),true,seats);
         if(byteFile == null){
+            LOG.log(Level.SEVERE,"not able to crete pdf");
             showAlert("We are really sorry, but someone fucked it up :( Try again, later");
         }
         else{
             showSucces(actionEvent);
         }
-
+        LOG.exiting(this.getClass().getName(),"exiting booking");
 
     }
 
@@ -136,7 +154,7 @@ public class BookPayView {
         try {
             return ImageIO.read(in);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.WARNING,"image can not be converted");
         }
         return null;
     }
@@ -162,13 +180,14 @@ public class BookPayView {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeOne){
             OutputStream outputStream = null;
+            LOG.entering(this.getClass().getName(),"entering downloading pdf");
             try {
                 outputStream = new FileOutputStream("out" + System.currentTimeMillis() + ".pdf");
                 outputStream.write(byteFile);
             }catch (FileNotFoundException e) {
-                e.printStackTrace();
+                LOG.log(Level.SEVERE,"cannot create pdf");
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.log(Level.SEVERE,"cannot create pdf");
             }finally {
                 try {
                     outputStream.close();

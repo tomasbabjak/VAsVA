@@ -25,10 +25,14 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.InputMismatchException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ManageFilmsView {
+
+    private static final Logger LOG = Logger.getLogger(ManageFilmsView.class.getName());
 
     private static final String JNDI = "ejb:AE09/09WAR/FilmManager!testuj.FilmManagerRemote";
 
@@ -90,9 +94,12 @@ public class ManageFilmsView {
         try{
             if (filmTitle.getText().equals("") || filmDescription.getText().equals("") || filmTrailer.getText().equals(""))
                 throw new InputMismatchException("Please complete all fields!");
-            else if (selectedImage == null)
+            else if (selectedImage == null) {
+                LOG.warning("not uploaded image");
                 throw new InputMismatchException("Please add the film poster!");
+            }
         } catch (NullPointerException e) {
+            LOG.warning("not complete fields");
         throw new InputMismatchException("Please complete all fields!");
         }
 
@@ -106,7 +113,7 @@ public class ManageFilmsView {
             filmManagerRemote.addFilm(filmTitle.getText(), filmDirector.getText(), filmCast.getText(), timestamp, filmDescription.getText(), Long.parseLong(filmDuration.getText()), Files.readAllBytes(selectedImage.toPath()));
 
         } catch (NamingException | IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"Naming Exeption, Initial Context Film manager",e);
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "New Film has been added!", ButtonType.OK);
@@ -117,7 +124,7 @@ public class ManageFilmsView {
                 sc.launchAdminScene(c,lan);
                 ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.log(Level.SEVERE,"opening admin scene",e);
             }
         }
     }
@@ -131,7 +138,7 @@ public class ManageFilmsView {
             sc.launchAdminScene(c,lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"opening previous scene",e);
         }
     }
 
@@ -155,5 +162,8 @@ public class ManageFilmsView {
                 Image img = SwingFXUtils.toFXImage(ImageIO.read(selectedImage), null);
             }
         } catch (FileNotFoundException ex) {
+            LOG.log(Level.SEVERE,"opening poster image faild",ex);
         }
-    }}
+    }
+
+}

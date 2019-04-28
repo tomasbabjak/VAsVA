@@ -4,20 +4,21 @@ import entity.Customer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import testuj.CustomerManagerRemote;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.IOException;
+import java.util.logging.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class LoginView {
+
+    private static final Logger LOG = Logger.getLogger(LoginView.class.getName());
 
     private static final String JNDI = "ejb:AE09/09WAR/CustomerManager!testuj.CustomerManagerRemote";
 
@@ -42,7 +43,7 @@ public class LoginView {
     public void loginClick(ActionEvent actionEvent) {
 
         Customer user = null;
-
+            LOG.entering(this.getClass().getName(),"entering logIn user");
             user = cusRemote.logIn(usernameBox.getText(),passwordBox.getText());
 
         if(user != null){
@@ -53,17 +54,19 @@ public class LoginView {
                 else sc.launchUserScene(user,lan);
                 ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
+                LOG.log(Level.SEVERE,"IO Exeption",e);
                 e.printStackTrace();
             }
         }
         else {
+            LOG.log(Level.SEVERE,"user not found");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR Dialog");
             alert.setHeaderText("Wrong password or name");
             alert.setContentText("Please, try again");
             alert.showAndWait();
         }
-
+        LOG.exiting(this.getClass().getName(),"exiting logIn");
     }
 
     public void registrateClick(ActionEvent actionEvent) {
@@ -96,7 +99,7 @@ public class LoginView {
             Context ctx = new InitialContext();
             cusRemote = (CustomerManagerRemote) ctx.lookup(JNDI);
         }catch (NamingException e){
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"Naming exeption, initialContext",e);
         }
         logInButton.setText(rb.getString("logInButton"));
         RegButton.setText(rb.getString("regButton"));

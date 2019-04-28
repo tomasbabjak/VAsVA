@@ -12,8 +12,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-
-
 @Stateless
 public class MailSender {
 
@@ -54,9 +52,6 @@ public class MailSender {
             bodyPart.setDataHandler(new DataHandler(bds));
             bodyPart.setFileName("ticket.pdf");
             multipart.addBodyPart(bodyPart);
-//            ByteArrayDataSource bds2 = new ByteArrayDataSource(image,"/qrcode.png");
-//            message.setDataHandler(new DataHandler(bds2));
-//            message.setFileName(bds2.getName());
 
             message.setContent(multipart);
             Transport.send(message);
