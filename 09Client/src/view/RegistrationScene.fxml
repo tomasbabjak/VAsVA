@@ -8,27 +8,27 @@
 
 <AnchorPane prefHeight="584.0" prefWidth="456.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationView">
 
-    <Label layoutX="122.0" layoutY="40.0" prefHeight="45.0" prefWidth="206.0" text="REGISTRATION">
+    <Label fx:id="reg" alignment="CENTER" layoutY="40.0" prefHeight="45.0" prefWidth="456.0" text="REGISTRATION" textAlignment="JUSTIFY">
         <font>
             <Font size="30.0" />
         </font></Label>
-    <Label layoutX="59.0" layoutY="125.0" text="First Name:">
+    <Label fx:id="fn" layoutX="59.0" layoutY="125.0" text="First Name:">
         <font>
             <Font size="18.0" />
         </font></Label>
-    <Label layoutX="59.0" layoutY="185.0" text="Last Name">
+    <Label fx:id="ln" layoutX="59.0" layoutY="185.0" text="Last Name">
         <font>
             <Font size="18.0" />
         </font></Label>
-    <Label layoutX="59.0" layoutY="245.0" text="Username:*">
+    <Label fx:id="un" layoutX="59.0" layoutY="245.0" text="Username:*">
         <font>
             <Font size="18.0" />
         </font></Label>
-    <Label layoutX="59.0" layoutY="305.0" text="Password:*">
+    <Label fx:id="passs" layoutX="59.0" layoutY="305.0" text="Password:*">
         <font>
             <Font size="18.0" />
         </font></Label>
-    <Label layoutX="59.0" layoutY="365.0" text="Repeat Password:*">
+    <Label fx:id="rpasss" layoutX="59.0" layoutY="365.0" text="Repeat Password:*">
         <font>
             <Font size="18.0" />
         </font></Label>
@@ -40,7 +40,7 @@
     <TextField fx:id="repass" accessibleRole="PASSWORD_FIELD" layoutX="210.0" layoutY="365.0" />
     <TextField fx:id="emil" layoutX="210.0" layoutY="425.0" />
 
-    <Button fx:id="regButton" layoutX="181.0" layoutY="485.0" mnemonicParsing="false" onAction="#register" text="Register">
+    <Button fx:id="regButton" alignment="CENTER" layoutX="181.0" layoutY="485.0" mnemonicParsing="false" onAction="#register" text="Register" textAlignment="CENTER">
         <font>
             <Font size="18.0" />
         </font></Button>
@@ -50,6 +50,6 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label layoutX="289.0" layoutY="553.0" prefHeight="17.0" prefWidth="149.0" text="*Fields can not be empty." />
+   <Label fx:id="message" layoutX="58.0" layoutY="553.0" prefHeight="17.0" prefWidth="277.0" text="*Fields can not be empty." />
 
 </AnchorPane>

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import testuj.CustomerManagerRemote;
@@ -26,6 +27,8 @@ import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class ManageFilmsView {
 
@@ -50,10 +53,36 @@ public class ManageFilmsView {
     TextField filmDirector;
     @FXML
     TextField filmDuration;
+    public Text newFilm;
+    public Text titleLabel;
+    public Text descriptionLabel;
+    public Text durationLabel;
+    public Text directorLabel;
+    public Text castLabel;
+    public Text dateLabel;
+    public Text imageLabel;
+    public Button uploadPhoto;
+    public Button addMovieButton;
 
     Customer c;
 
-    public void setUser(Customer c){
+    private String lan;
+
+
+    public void setUser(Customer c, String lan) {
+        this.lan = lan;
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
+        backButton.setText(rb.getString("backButton"));
+        newFilm.setText(rb.getString("newFilm"));
+        titleLabel.setText(rb.getString("titleLabel"));
+        descriptionLabel.setText(rb.getString("descriptionLabel"));
+        durationLabel.setText(rb.getString("durationLabel"));
+        directorLabel.setText(rb.getString("directorLabel"));
+        castLabel.setText(rb.getString("castLabel"));
+        dateLabel.setText(rb.getString("dateLabel"));
+        uploadPhoto.setText(rb.getString("uploadPhoto"));
+        addMovieButton.setText(rb.getString("addMovieButton"));
+        imageLabel.setText(rb.getString("imageLabel"));
         this.c = c;
     }
 
@@ -92,7 +121,7 @@ public class ManageFilmsView {
         if (alert.getResult() == ButtonType.OK) {
             SceneCreator sc = new SceneCreator();
             try {
-                sc.launchAdminScene(c);
+                sc.launchAdminScene(c,lan);
                 ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
                 LOG.log(Level.SEVERE,"opening admin scene",e);
@@ -106,7 +135,7 @@ public class ManageFilmsView {
     public void backToPrevScene(ActionEvent actionEvent) {
         SceneCreator sc = new SceneCreator();
         try {
-            sc.launchAdminScene(c);
+            sc.launchAdminScene(c,lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             LOG.log(Level.SEVERE,"opening previous scene",e);

@@ -16,7 +16,7 @@
         <AnchorPane prefHeight="37.0" prefWidth="702.0">
             <children>
                 <MenuBar prefHeight="35.0" prefWidth="700.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
-                <Text fill="WHITE" layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="Bookings" />
+                <Text fx:id="bookingsLabel" fill="WHITE" layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="Bookings" />
                 <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="605.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Cancel Booking" textAlignment="CENTER" textFill="#ebdfdf">
                     <font>
                         <Font size="18.0" />
@@ -32,17 +32,17 @@
             <Font size="33.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="186.0" text="Date:">
+      <Label fx:id="dateLabel" layoutX="26.0" layoutY="186.0" text="Date:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="223.0" text="Time:">
+      <Label fx:id="timeLabel" layoutX="25.0" layoutY="223.0" text="Time:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="259.0" text="Seats:">
+      <Label fx:id="seatsLabel" layoutX="26.0" layoutY="259.0" text="Seats:">
          <font>
             <Font size="20.0" />
          </font>
@@ -72,7 +72,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="340.0" text="Price:">
+      <Label fx:id="priceLabel" layoutX="25.0" layoutY="340.0" text="Price:">
          <font>
             <Font size="20.0" />
          </font>

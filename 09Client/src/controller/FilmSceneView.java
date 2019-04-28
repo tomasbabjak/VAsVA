@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import testuj.dbtestRemote;
 import javax.imageio.ImageIO;
 import javax.naming.Context;
@@ -26,6 +27,8 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class FilmSceneView{
 
@@ -42,11 +45,15 @@ public class FilmSceneView{
     Image image;
     @FXML
     String id;
+    @FXML
+    Text allFilms;
 
     List<Movie> movies = null;
     HBox hb = new HBox();
 
     Customer c;
+
+    private String lan;
 
     public void setUser(Customer c) {
         this.c = c;
@@ -56,10 +63,10 @@ public class FilmSceneView{
         SceneCreator sc = new SceneCreator();
         try {
             if(c.isAdmin()){
-                sc.launchAdminScene(c);
+                sc.launchAdminScene(c,lan);
             }
             else {
-                sc.launchUserScene(c);
+                sc.launchUserScene(c,lan);
             }
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
@@ -69,7 +76,9 @@ public class FilmSceneView{
     }
 
 
-    public void initialize() {
+    public void initialize(String lan) {
+        this.lan = lan;
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
 
         try {
             Context ctx = new InitialContext();
@@ -78,6 +87,9 @@ public class FilmSceneView{
         }catch (NamingException e){
            LOG.log(Level.SEVERE,"Initial context faild",e);
         }
+
+        backButton.setText(rb.getString("backButton"));
+        allFilms.setText(rb.getString("allFilms"));
 
         int listsize = -1;
 
@@ -124,7 +136,7 @@ public class FilmSceneView{
                     LOG.log(Level.WARNING,"movie was not found by poster");
                 }
                 SceneCreator sc = new SceneCreator();
-                sc.launchSceneSelectedFilm(c, movie, SwingFXUtils.toFXImage(convertImage(movie.getImage()), null));
+                sc.launchSceneSelectedFilm(lan, c, movie, SwingFXUtils.toFXImage(convertImage(movie.getImage()), null));
                 ((javafx.scene.Node) (e.getSource())).getScene().getWindow().hide();
             } catch (IOException ex) {
                 LOG.log(Level.WARNING,"IO Exception");

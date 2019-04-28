@@ -22,7 +22,7 @@ public class SceneCreator {
     public void setAncestorRV(RegistrationView rv){this.rv = rv;}
     public void setAncestorLV(LoginView lv){this.lv = lv;}
 
-    public void launchSceneSelectedFilm(Customer c, Movie movie, Image image) throws IOException {
+    public void launchSceneSelectedFilm(String language,Customer c, Movie movie, Image image) throws IOException {
 
         SelectedFilmView controller;
         Stage stage = new Stage();
@@ -30,31 +30,32 @@ public class SceneCreator {
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
         controller.setCustomer(c);
-        controller.buildScene(movie,image);
+        controller.buildScene(movie,image,language);
         stage.setTitle("Title");
         stage.setScene(new Scene(parent));
         stage.show();
     }
 
-    public void launchSceneMovies(Customer c) throws IOException {
+    public void launchSceneMovies(Customer c, String language) throws IOException {
         FilmSceneView controller;
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ViewFilmsScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
         controller.setUser(c);
+        controller.initialize(language);
         stage.setTitle("Title");
         stage.setScene(new Scene(parent));
         stage.show();
     }
 
-    public void launchUserScene(Customer c) throws IOException {
+    public void launchUserScene(Customer c, String language) throws IOException {
         UserSceneView controller;
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/UserScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
-        //controller.setAncestor(this);
+        controller.setLanguage(language);
         controller.setUser(c);
         controller.setStage(stage);
         stage.setTitle("Title");
@@ -62,13 +63,14 @@ public class SceneCreator {
         stage.show();
     }
 
-    public void launchAdminScene(Customer c) throws IOException {
+    public void launchAdminScene(Customer c, String language) throws IOException {
         AdminView controller;
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/AdminScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
         controller.setUser(c);
+        controller.setLanguage(language);
         controller.setStage(stage);
         stage.setTitle("Title");
         stage.setScene(new Scene(parent));
@@ -76,12 +78,13 @@ public class SceneCreator {
     }
 
 
-    public void launchSceneRegistration() throws IOException {
+    public void launchSceneRegistration(String language) throws IOException {
         RegistrationView controller;
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/RegistrationScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
+        controller.initialize(language);
         stage.setTitle("Title");
         stage.setScene(new Scene(parent));
         stage.show();
@@ -94,7 +97,7 @@ public class SceneCreator {
         SceneCreator.currentCustomer = currentCustomer;
     }
 
-    public void launchLogInScene() throws IOException {
+    public void launchLogInScene(String language) throws IOException {
         LoginView controller;
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginScene.fxml"));
@@ -106,13 +109,13 @@ public class SceneCreator {
     }
 
 
-    public void launchManageFilmScene(Customer c) throws IOException {
+    public void launchManageFilmScene(Customer c, String language) throws IOException {
         ManageFilmsView controller;
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageFilmScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
-        controller.setUser(c);
+        controller.setUser(c, language);
         stage.setTitle("Title");
         stage.setScene(new Scene(parent));
         stage.show();

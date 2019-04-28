@@ -23,16 +23,16 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-      <Text layoutX="400.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose date:" />
-      <Text layoutX="562.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose time:" />
+      <Text fx:id="dateLabel" layoutX="400.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose date:" />
+      <Text fx:id="timeLabel" layoutX="562.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose time:" />
         <DatePicker fx:id="datePicker" layoutX="372.0" layoutY="144.0" onAction="#picked_date" prefHeight="27.0" prefWidth="141.0" />
         <ComboBox fx:id="timeDropDownListHours" layoutX="536.0" layoutY="144.0" prefHeight="28.0" prefWidth="70.0" />
         <ComboBox fx:id="timeDropDownListMinutes" layoutX="619.0" layoutY="144.0" prefHeight="28.0" prefWidth="70.0" />
-        <Button layoutX="530.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#createScreening" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Add Screening" textFill="WHITE" />
+        <Button fx:id="addScreening" layoutX="530.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#createScreening" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Add Screening" textFill="WHITE" />
         <TextField fx:id="movie_title" alignment="CENTER" editable="false" layoutX="14.0" layoutY="56.0" text="Movie title" />
         <ComboBox fx:id="cityBox" layoutX="14.0" layoutY="145.0" onAction="#selectedCity" prefWidth="150.0" />
-        <Label layoutX="77.0" layoutY="111.0" text="City" />
-      <Label layoutX="227.0" layoutY="111.0" text="Auditorium" />
+        <Label fx:id="cityLabel" layoutX="77.0" layoutY="111.0" text="City" />
+      <Label layoutX="226.0" layoutY="111.0" text="Auditorium:" />
       <ComboBox fx:id="auditoriumBox" layoutX="189.0" layoutY="145.0" onAction="#selectedAuditorium" prefWidth="150.0" />
       <Label layoutX="610.0" layoutY="150.0" text=":" />
 
