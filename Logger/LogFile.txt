@@ -1,0 +1,60 @@
+apr 27, 2019 8:33:09 PM org.jboss.logging.LoggerProviders logProvider
+DEBUG: Logging Provider: org.jboss.logging.JDKLoggerProvider
+apr 27, 2019 8:33:09 PM org.wildfly.naming.client.Version <clinit>
+INFO: WildFly Naming version 1.0.9.Final
+apr 27, 2019 8:33:10 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
+WARN: WFNAM00051: Provider URLs already given via standard mechanism; ignoring legacy property-based connection configuration
+apr 27, 2019 8:33:10 PM org.wildfly.security.Version <clinit>
+INFO: ELY00001: WildFly Elytron version 1.8.0.Final
+apr 27, 2019 8:33:10 PM org.jboss.ejb.client.naming.ejb.ejbURLContextFactory <clinit>
+INFO: EJBCLIENT000064: org.jboss.ejb.client.naming.ejb.ejbURLContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
+apr 27, 2019 8:33:10 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
+WARN: WFNAM00051: Provider URLs already given via standard mechanism; ignoring legacy property-based connection configuration
+apr 27, 2019 8:33:10 PM org.xnio.Xnio <clinit>
+INFO: XNIO version 3.6.5.Final
+apr 27, 2019 8:33:10 PM org.xnio.nio.NioXnio <clinit>
+INFO: XNIO NIO Implementation Version 3.6.5.Final
+apr 27, 2019 8:33:10 PM org.jboss.threads.Version <clinit>
+INFO: JBoss Threads version 2.3.3.Final
+apr 27, 2019 8:33:10 PM org.xnio.nio.WorkerThread run
+DEBUG: Started channel thread 'XNIO-1 I/O-1', selector sun.nio.ch.WindowsSelectorImpl@1d2feeb
+apr 27, 2019 8:33:10 PM org.jboss.remoting3.EndpointImpl <clinit>
+INFO: JBoss Remoting version 5.0.8.Final
+apr 27, 2019 8:33:10 PM org.xnio.nio.WorkerThread run
+DEBUG: Started channel thread 'XNIO-1 Accept', selector sun.nio.ch.WindowsSelectorImpl@1f8602e0
+apr 27, 2019 8:33:10 PM org.jboss.ejb.client.EJBClient <clinit>
+INFO: JBoss EJB Client version 4.0.14.Final
+apr 27, 2019 8:33:11 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=RegButton, styleClass=button]'Registrate', name: focused, value: true] focused=true
+apr 27, 2019 8:33:11 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from null to Button[id=RegButton, styleClass=button]'Registrate'
+apr 27, 2019 8:33:12 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=RegButton, styleClass=button]'Registrate', name: focused, value: false] focused=false
+apr 27, 2019 8:33:12 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=usernameBox, styleClass=text-input text-field], name: focused, value: true] focused=true
+apr 27, 2019 8:33:12 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from Button[id=RegButton, styleClass=button]'Registrate' to TextField[id=usernameBox, styleClass=text-input text-field]
+apr 27, 2019 8:33:13 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=usernameBox, styleClass=text-input text-field], name: focused, value: false] focused=false
+apr 27, 2019 8:33:13 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: PasswordField[id=passwordBox, styleClass=text-input text-field password-field], name: focused, value: true] focused=true
+apr 27, 2019 8:33:13 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from TextField[id=usernameBox, styleClass=text-input text-field] to PasswordField[id=passwordBox, styleClass=text-input text-field password-field]
+apr 27, 2019 8:33:14 PM org.jboss.ejb.client.EJBInvocationHandler invoke
+DEBUG: Calling invoke(module = AE09/09WAR/CustomerManager, strong affinity = None, weak affinity = None): 
+apr 27, 2019 8:33:15 PM org.jboss.logging.DelegatingBasicLogger debugf
+DEBUG: Received MODULE_AVAILABLE(8) message for module AE09/09WAR
+apr 27, 2019 8:33:15 PM controller.LoginView loginClick
+SEVERE: user not found
+apr 27, 2019 8:33:15 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: PasswordField[id=passwordBox, styleClass=text-input text-field password-field], name: focused, value: false] focused=false
+apr 27, 2019 8:33:15 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button@179b6e95[styleClass=button]'OK', name: focused, value: true] focused=true
+apr 27, 2019 8:33:15 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from null to Button@179b6e95[styleClass=button]'OK'
+apr 27, 2019 8:33:17 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button@179b6e95[styleClass=button]'OK', name: focused, value: false] focused=false
+apr 27, 2019 8:33:17 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: PasswordField[id=passwordBox, styleClass=text-input text-field password-field], name: focused, value: true] focused=true
+apr 27, 2019 8:33:18 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: PasswordField[id=passwordBox, styleClass=text-input text-field password-field], name: focused, value: false] focused=false

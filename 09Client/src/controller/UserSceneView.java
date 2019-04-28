@@ -6,8 +6,11 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.Label;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class UserSceneView {
+
+    private static final Logger LOG = Logger.getLogger(UserSceneView.class.getName());
 
     Customer c;
     LoginView ancestor;
@@ -45,7 +48,7 @@ public class UserSceneView {
             sc.launchSceneMovies(c);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.severe("opening movies scene");
         }
     }
 
@@ -59,7 +62,7 @@ public class UserSceneView {
             sc.launchLogInScene();
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.severe("opening logout scene");
         }
     }
 }

@@ -6,8 +6,12 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AdminView {
+
+    private static final Logger LOG = Logger.getLogger(AdminView.class.getName());
 
     public Label lastNameLabel;
     public Label firstNameLabel;
@@ -38,7 +42,7 @@ public class AdminView {
             sc.launchManageFilmScene(c);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"cannot open back scene",e);
         }
     }
 
@@ -48,7 +52,7 @@ public class AdminView {
             sc.launchSceneMovies(c);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"cannot open booking scene",e);
         }
     }
 
@@ -58,7 +62,7 @@ public class AdminView {
             sc.launchLogInScene();
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"cannot open back scene",e);
         }
     }
 }

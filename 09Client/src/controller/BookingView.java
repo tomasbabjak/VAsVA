@@ -34,8 +34,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BookingView {
+
+    private static final Logger LOG = Logger.getLogger(BookingView.class.getName());
 
     int screening_id;
     Screening selectedScree = null;
@@ -149,7 +153,7 @@ public class BookingView {
                 .findFirst()
                 .orElse(null);
         if(selectedScree == null){
-            System.out.println("nieco je yle");
+            LOG.log(Level.WARNING,"no screeenig was found");
             return;
         }
         obsadene = bmr.getReservedSeats((int) selectedScree.getId());

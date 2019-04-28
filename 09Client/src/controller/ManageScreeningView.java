@@ -23,8 +23,12 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ManageScreeningView {
+
+    private static final Logger LOG = Logger.getLogger(ManageScreeningView.class.getName());
 
     private static final String JNDI1= "ejb:AE09/09WAR/ScreeningManager!testuj.ScreeningManagerRemote";
 
@@ -55,7 +59,7 @@ public class ManageScreeningView {
             sc.launchSceneMovies(c);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
-            e.printStackTrace();
+           LOG.log(Level.SEVERE,"backScene opening",e);
         }
     }
 
@@ -66,7 +70,7 @@ public class ManageScreeningView {
             Context ctx = new InitialContext();
             smr = (ScreeningManagerRemote) ctx.lookup(JNDI1);
         }catch (NamingException e){
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"InitialContext",e);
         }
 
         cities = smr.getCities();
@@ -87,7 +91,7 @@ public class ManageScreeningView {
             Context ctx = new InitialContext();
             smr = (ScreeningManagerRemote) ctx.lookup(JNDI1);
         }catch (NamingException e){
-            e.printStackTrace();
+            LOG.log(Level.SEVERE,"InitialContext",e);
         }
         System.out.println(selectedCity.getCityName());
         auditoriums = smr.getAuditoriums(selectedCity.getCityId());
@@ -106,6 +110,7 @@ public class ManageScreeningView {
             if (selectedCity.equals("") || selectedAuditorium.equals(""))
                 throw new InputMismatchException("Please complete all fields!");
         } catch (NullPointerException e) {
+            LOG.log(Level.FINEST,"not complete fields screating screening");
             throw new InputMismatchException("Please complete all fields!");
         }
 
@@ -133,7 +138,7 @@ public class ManageScreeningView {
                 sc.launchSceneMovies(c);
                 ((javafx.scene.Node) (mouseEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.severe("opening movies scene");
             }
         }
     }
