@@ -8,6 +8,9 @@ import javax.ejb.Stateless;
 import java.sql.Timestamp;
 import java.time.chrono.Chronology;
 
+/**
+ * Facade bean implements remote
+ */
 @Stateless
 public class FilmManager implements FilmManagerRemote {
 

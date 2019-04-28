@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Random;
 
+/**
+ * Bean to encrypt password, respectively decrypt it to verify user
+ */
 @Stateless
 public class PasswordUtils {
 
@@ -18,6 +21,9 @@ public class PasswordUtils {
     private static final int ITERATIONS = 10000;
     private static final int KEY_LENGTH = 256;
 
+    /**
+     * Generating salt
+     */
     public static String getSalt(int length) {
         StringBuilder returnValue = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
@@ -39,6 +45,12 @@ public class PasswordUtils {
         }
     }
 
+    /**
+     * Generating secured password
+     * @param password password in plantext
+     * @param salt generated salt
+     * @return secured password as string
+     */
     public static String generateSecurePassword(String password, String salt) {
         String returnValue = null;
         byte[] securePassword = hash(password.toCharArray(), salt.getBytes());
@@ -48,6 +60,13 @@ public class PasswordUtils {
         return returnValue;
     }
 
+    /**
+     * Verifying passwords
+     * @param providedPassword password in plaintext
+     * @param securedPassword secured password
+     * @param salt salt
+     * @return boolean value of matching passwords
+     */
     public static boolean verifyUserPassword(String providedPassword, String securedPassword, String salt) {
         boolean returnValue = false;
 

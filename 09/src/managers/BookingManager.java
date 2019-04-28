@@ -4,12 +4,13 @@ import entity.City;
 import entity.Screening;
 import executive.BookingExe;
 import testuj.BookingManagerRemote;
-
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+/**
+ * Facade bean implements remote
+ */
 @Stateless
 public class BookingManager implements BookingManagerRemote {
 
