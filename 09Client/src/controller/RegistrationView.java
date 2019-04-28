@@ -11,8 +11,10 @@ import entity.Customer;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.awt.*;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 
 public class RegistrationView {
 
@@ -24,7 +26,29 @@ public class RegistrationView {
     public TextField login;
     public TextField pass;
     public TextField repass;
+    public Label fn;
+    public Label ln;
+    public Label reg;
+    public Label passs;
+    public Label rpasss;
+    public Label un;
+    public Label message;
+    public Button regButton;
 
+    private String lan;
+
+    public void initialize(String language){
+        this.lan = language;
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(language));
+        fn.setText(rb.getString("fNameLabel"));
+        ln.setText(rb.getString("lNameLabel"));
+        reg.setText(rb.getString("registrationLabel"));
+        passs.setText(rb.getString("passwordLabel"));
+        rpasss.setText(rb.getString("rpasswordLabel"));
+        un.setText(rb.getString("nameLabel"));
+        message.setText(rb.getString("messageLabel"));
+        regButton.setText(rb.getString("regButton"));
+    }
     public void register(javafx.event.ActionEvent actionEvent) {
 
         Customer user = null;
@@ -60,7 +84,7 @@ public class RegistrationView {
             SceneCreator sc = new SceneCreator();
             try {
                 sc.setAncestorRV(this);
-                sc.launchUserScene(user);
+                sc.launchUserScene(user,lan);
                 ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
                 e.printStackTrace();

@@ -30,10 +30,7 @@ import javax.naming.NamingException;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class BookingView {
 
@@ -65,10 +62,19 @@ public class BookingView {
     public Button backButton;
     public DatePicker datePicker;
     public ComboBox timeDropDownList;
+    public Text filmLabel;
+    public Text cityLabel;
+    public Text dateLabel;
+    public Text timeLabel;
+    public Button searchButton;
+    public Button bookButton;
+    public Text bookingsLabel;
+
+    private String lan;
 
     public void backToPrevScene(ActionEvent actionEvent) throws IOException {
         SceneCreator sc = new SceneCreator();
-        sc.launchSceneMovies(SceneCreator.getCurrentCustomer());
+        sc.launchSceneMovies(SceneCreator.getCurrentCustomer(),lan);
         ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
@@ -80,7 +86,7 @@ public class BookingView {
             Parent parent = fxmlLoader.load();
             controller = fxmlLoader.getController();
             //  controller.setScreening_id(1);
-            controller.init(movie,selectedScree,seats,bmr);
+            controller.init(movie,selectedScree,seats,bmr,lan);
 
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Title");
@@ -125,9 +131,21 @@ public class BookingView {
         timeDropDownList.setItems(FXCollections.observableArrayList(times));
     }
 
-    public void init(){
+    public void init(String lan){
+        this.lan = lan;
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
+        backButton.setText(rb.getString("backButton"));
+        filmLabel.setText(rb.getString("filmLabel"));
+        cityLabel.setText(rb.getString("cityLabel"));
+        dateLabel.setText(rb.getString("dateLabel"));
+        timeLabel.setText(rb.getString("timeLabel"));
+        searchButton.setText(rb.getString("searchButton"));
+        bookButton.setText(rb.getString("bookButton"));
+        bookingsLabel.setText(rb.getString("bookingsLabel"));
+
         movie_title.setText(movie.getTitle());
         datePicker.setValue(LocalDate.now());
+
         try {
             Context ctx = new InitialContext();
             bmr = (BookingManagerRemote) ctx.lookup(JNDI);

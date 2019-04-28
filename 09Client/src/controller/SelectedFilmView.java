@@ -15,17 +15,24 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SelectedFilmView {
     public Button backButton;
     public ImageView selectedFilmPoster;
     public Text description;
     public Text startDate;
-    public Text time;
     public Button  bookButton;
     public Text title;
     public Text director;
     public Text cast;
+    public Text windowTitleLabel;
+    public Text premiereDate;
+    public Text directorLabel;
+    public Text castLabel;
+
+    private String lan;
 
     Movie movie;
     Customer c;
@@ -37,7 +44,7 @@ public class SelectedFilmView {
     public void backToPrevScene(ActionEvent actionEvent) {
         SceneCreator sc = new SceneCreator();
         try {
-            sc.launchSceneMovies(c);
+            sc.launchSceneMovies(c,lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +59,7 @@ public class SelectedFilmView {
             controller = fxmlLoader.getController();
             controller.setMovie(movie);
             controller.setUser(c);
-            controller.init();
+            controller.init(lan);
 
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Title");
@@ -70,7 +77,7 @@ public class SelectedFilmView {
             controller = fxmlLoader.getController();
             controller.setMovie(movie);
             controller.setScreening_id(1);
-            controller.init();
+            controller.init(lan);
 
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Title");
@@ -82,11 +89,19 @@ public class SelectedFilmView {
     }
 
 
-    public void buildScene(Movie movie, Image image){
+    public void buildScene(Movie movie, Image image, String lan){
+        this.lan = lan;
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
+        windowTitleLabel.setText(rb.getString("userViewLabel"));
+        directorLabel.setText(rb.getString("directorLabel"));
+        premiereDate.setText(rb.getString("premiereDate"));
+        castLabel.setText(rb.getString("castLabel"));
+        backButton.setText(rb.getString("backButton"));
+
         this.movie = movie;
 //        Integer.toString(movie.getPremiere_date().getDate());
-        if(c.isAdmin())bookButton.setText("Add screening");
-        else bookButton.setText("Book Movie");
+        if(c.isAdmin())bookButton.setText(rb.getString("addScreeningButton"));
+        else bookButton.setText(rb.getString("bookButton"));
         title.setText(movie.getTitle());
         description.setText(movie.getDescription());
         selectedFilmPoster.setImage(image);

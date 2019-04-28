@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import testuj.BookingManagerRemote;
 import testuj.FilmManagerRemote;
 import testuj.ScreeningManagerRemote;
@@ -20,9 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.*;
 
 public class ManageScreeningView {
 
@@ -35,6 +34,12 @@ public class ManageScreeningView {
     public DatePicker datePicker;
     public ComboBox timeDropDownListHours;
     public ComboBox timeDropDownListMinutes;
+    public Text timeLabel;
+    public Label cityLabel;
+    public Text dateLabel;
+    public Button addScreening;
+
+    private String lan;
 
     Customer c;
     Movie movie;
@@ -52,16 +57,25 @@ public class ManageScreeningView {
     public void backToPrevScene(ActionEvent actionEvent) {
         SceneCreator sc = new SceneCreator();
         try {
-            sc.launchSceneMovies(c);
+            sc.launchSceneMovies(c,lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void init(){
+    public void init(String lan){
+        this.lan = lan;
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
+        backButton.setText(rb.getString("backButton"));
+        cityLabel.setText(rb.getString("cityLabel"));
+        timeLabel.setText(rb.getString("timeLabel"));
+        dateLabel.setText(rb.getString("dateLabel"));
+        addScreening.setText(rb.getString("addScreening"));
+
         movie_title.setText(movie.getTitle());
         datePicker.setValue(LocalDate.now());
+
         try {
             Context ctx = new InitialContext();
             smr = (ScreeningManagerRemote) ctx.lookup(JNDI1);
@@ -71,8 +85,6 @@ public class ManageScreeningView {
 
         cities = smr.getCities();
         cityBox.setItems(FXCollections.observableArrayList(cities));
-//        timeDropDownListHours.setItems(FXCollections.observableArrayList("10","11","12","13","14", "15", "16", "17", "18", "19", "20", "21", "22", "23")); //sprav z toho list
-//        timeDropDownListMinutes.setItems(FXCollections.observableArrayList("00", "10", "20", "30", "40", "50")); //aj tu
         timeDropDownListHours.setItems(FXCollections.observableArrayList(10,11,12,13,14, 15, 16, 17, 18, 19, 20, 21, 22, 23)); //sprav z toho list
         timeDropDownListMinutes.setItems(FXCollections.observableArrayList(00, 10, 20, 30, 40, 50)); //aj tu
 
@@ -130,7 +142,7 @@ public class ManageScreeningView {
         if (alert.getResult() == ButtonType.OK) {
             SceneCreator sc = new SceneCreator();
             try {
-                sc.launchSceneMovies(c);
+                sc.launchSceneMovies(c,lan);
                 ((javafx.scene.Node) (mouseEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
                 e.printStackTrace();

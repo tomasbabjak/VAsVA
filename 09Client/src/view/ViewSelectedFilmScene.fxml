@@ -12,7 +12,7 @@
    <children>
       <AnchorPane prefHeight="37.0" prefWidth="702.0" />
       <MenuBar prefHeight="35.0" prefWidth="702.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
-      <Text fill="WHITE" layoutX="15.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="All Films" wrappingWidth="256.8037519454956" />
+      <Text fx:id="windowTitleLabel" fill="WHITE" layoutX="12.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="All Films" wrappingWidth="256.8037519454956" />
       <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="651.0" layoutY="-1.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
          <font>
             <Font size="18.0" />
@@ -31,12 +31,12 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fx:id="description" fill="WHITE" layoutX="262.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="353.28515625">
+      <Text fx:id="description" fill="WHITE" layoutX="262.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="353.28515625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="262.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premiere date:">
+      <Text fx:id="premiereDate" fill="WHITE" layoutX="262.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premiere date:">
          <font>
             <Font size="18.0" />
          </font>
@@ -47,7 +47,7 @@
          </font>
       </Text>
       <Button fx:id="bookButton" layoutX="552.0" layoutY="337.0" mnemonicParsing="false" onAction="#goToBookingScene" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: white;" />
-      <Text fx:id="director" fill="WHITE" layoutX="338.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Director" wrappingWidth="353.28515625">
+      <Text fx:id="director" fill="WHITE" layoutX="338.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Director" wrappingWidth="353.28515625">
          <font>
             <Font size="18.0" />
          </font>
@@ -57,12 +57,12 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="262.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Director:">
+      <Text fx:id="directorLabel" fill="WHITE" layoutX="262.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Director:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="262.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cast:">
+      <Text fx:id="castLabel" fill="WHITE" layoutX="262.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cast:">
          <font>
             <Font size="18.0" />
          </font>

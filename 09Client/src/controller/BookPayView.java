@@ -7,6 +7,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import property.PropertyReader;
 import testuj.BookingManagerRemote;
 
@@ -14,7 +15,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class BookPayView {
     Movie movie;
@@ -45,6 +48,11 @@ public class BookPayView {
     public TextField CodeF;
     public Button ConfirmB;
     //
+    public Label dateLabel;
+    public Label timeLabel;
+    public Text bookingsLabel;
+    public Label priceLabel;
+    public Label seatsLabel;
 
     public void backToPrevScene(ActionEvent actionEvent) {
         ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -90,7 +98,22 @@ public class BookPayView {
 
     }
 
-    public void init(Movie movie, Screening screening, List<Integer> seats, BookingManagerRemote bmr){
+    public void init(Movie movie, Screening screening, List<Integer> seats, BookingManagerRemote bmr,String lan){
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
+        backButton.setText(rb.getString("backButton"));
+        dateLabel.setText(rb.getString("dateLabel"));
+        timeLabel.setText(rb.getString("timeLabel"));
+        bookingsLabel.setText(rb.getString("bookingsLabel"));
+        priceLabel.setText(rb.getString("priceLabel"));
+        seatsLabel.setText(rb.getString("seatsLabel"));
+        PayB.setText(rb.getString("payButton"));
+        ReserveB.setText(rb.getString("onlyReserve"));
+
+        ConfirmB.setText(rb.getString("confirmButton"));
+        expL.setText(rb.getString("expireLabel"));
+        cardL.setText(rb.getString("cardLabel"));
+        CodeL.setText(rb.getString("codeLabel"));
+
         this.bmr = bmr;
         this.movie = movie;
         this.customer = SceneCreator.getCurrentCustomer();

@@ -1,11 +1,18 @@
 package controller;
 
 import entity.Customer;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import javafx.scene.control.Label;
+import org.apache.commons.collections.BagUtils;
+
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class UserSceneView {
 
@@ -17,15 +24,41 @@ public class UserSceneView {
     public Label lastNameLabel;
     public Label firstNameLabel;
     public Label login;
+    public Label windowTitleLabel;
+    public Label you;
+    public Button manageFilmsButton;
+    public Button manageBookingsButton;
+    public Button logOutButton;
+    public ComboBox language;
 
+    private String lan;
     public void setAncestor(SceneCreator sceneCreator) {
 
     }
 
+    public void changeLanguage() {
+        lan = language.getSelectionModel().getSelectedItem().toString();
+        setLanguage(lan);
+    }
+
+        public void setLanguage(String lan){
+        this.lan = lan;
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
+        windowTitleLabel.setText(rb.getString("userViewLabel"));
+        you.setText(rb.getString("loginInfo"));
+        manageFilmsButton.setText(rb.getString("viewFilms"));
+        manageBookingsButton.setText(rb.getString("viewBookings"));
+        logOutButton.setText(rb.getString("logOutButton"));
+
+    }
+
     public void setStage(Stage stage) {
+
         login.setText(c.getUsername());
         lastNameLabel.setText(c.getLastName());
         firstNameLabel.setText(c.getFirstName());
+        language.setItems(FXCollections.observableArrayList("en","sk","sw"));
+        language.getSelectionModel().select(lan);
         this.stage = stage;
     }
 
@@ -42,7 +75,7 @@ public class UserSceneView {
     public void manageMoviesClick(ActionEvent actionEvent) {
         SceneCreator sc = new SceneCreator();
         try {
-            sc.launchSceneMovies(c);
+            sc.launchSceneMovies(c,lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,7 +89,7 @@ public class UserSceneView {
     public void logOutClick(ActionEvent actionEvent){
         SceneCreator sc = new SceneCreator();
         try {
-            sc.launchLogInScene();
+            sc.launchLogInScene(lan);
             ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
