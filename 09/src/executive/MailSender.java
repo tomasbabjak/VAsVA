@@ -12,9 +12,21 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Bean use to sending mail to customer
+ * Mail contains attachment, respectively ticket pdf with qrcode
+ */
 @Stateless
 public class MailSender {
 
+    /**
+     *
+     * @param addresses email adress of recipient
+     * @param topic topic of email
+     * @param textMessage main text of message
+     * @param pdf byte array that represent ticket in pdf format
+     * @param image byte array image/qrcode
+     */
     public void send(String addresses, String topic, String textMessage, byte[] pdf, byte[] image) {
         Properties properties = new Properties();
         String fileName = System.getProperty("jboss.server.config.dir") + "\\my.properties";

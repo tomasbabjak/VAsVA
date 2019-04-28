@@ -12,6 +12,9 @@ import javax.persistence.Query;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Dao bean that working with database specifically with events related to screening
+ */
 @Stateless
 public class ScreeningDao {
 

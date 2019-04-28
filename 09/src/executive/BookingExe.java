@@ -5,7 +5,6 @@ import entity.City;
 import entity.Movie;
 import entity.Reservation;
 import entity.Screening;
-
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -13,6 +12,9 @@ import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Stateless executive bean to manage the events associated with the booking seats
+ */
 @Stateless
 @LocalBean
 public class BookingExe {
@@ -20,6 +22,11 @@ public class BookingExe {
     @EJB
     BookingDao dao;
 
+    /**
+     * Method to obtain seats that are booked for specific screening
+     * @param screaning screening
+     * @return List of seats numbers
+     */
     public List<Integer> getSeats(int screaning) {
 
         List<Integer> result;
@@ -46,6 +53,16 @@ public class BookingExe {
         return result;
     }
 
+    /**
+     * Method to add a new record of reservation to database
+     * Method also creates qr code, that represents id of reservation and then it is used in ticket in pdfCreator.
+     * This method also sending this ticket to mail
+     * @param customerId Id of custommer
+     * @param screeningId Id of screening
+     * @param paid booloan value representing whether the reservation was paid
+     * @param seats list of booked seats
+     * @return pdf file, ticket in pdf format
+     */
     public byte[] setReservation(long customerId, long screeningId, boolean paid, List<Integer> seats) {
         byte[] imageB = null;
         byte[] pdf = null;

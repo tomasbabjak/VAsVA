@@ -9,14 +9,20 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import javax.ejb.Stateless;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 
+/**
+ * Qr generator bean
+ */
 @Stateless
 public class QrGenerator {
 
     private static final String QR_CODE_IMAGE_PATH = "./MyQRCode.png";
 
+    /**
+     * Creating qrcode
+     * @param text text that be encode to qrcode
+     * @return byte array qrcode
+     */
     public static byte[] getQRCodeImage(String text) {
         byte[] pngData = null;
         try {
@@ -24,9 +30,6 @@ public class QrGenerator {
             BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 100, 100);
             ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
             MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
-
-//            Path path = FileSystems.getDefault().getPath(QR_CODE_IMAGE_PATH);
-//            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
 
             pngData = pngOutputStream.toByteArray();
         } catch (WriterException e) {

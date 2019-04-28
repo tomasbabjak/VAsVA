@@ -4,20 +4,19 @@ import entity.Customer;
 import executive.CheckExe;
 import executive.LoginExe;
 import testuj.CustomerManagerRemote;
-
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
-
+/**
+ * Facade bean implements remote
+ */
 @Stateless
 public class CustomerManager implements CustomerManagerRemote {
 
-    @PersistenceContext(unitName = "09")
-    private EntityManager entityManager;
+    //@PersistenceContext(unitName = "09")
+    //private EntityManager entityManager;
 
     @EJB
     LoginExe exe;

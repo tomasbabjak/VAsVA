@@ -11,6 +11,9 @@ import javax.ejb.Stateless;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Executive bean to working with events associated with screenings
+ */
 @Stateless
 @LocalBean
 public class ScreeningExe {
@@ -21,7 +24,6 @@ public class ScreeningExe {
     public List<City> getCities() {
         return dao.getCities();
     }
-
 
     public List<Auditorium> getAuditoriums(long id) {
         return dao.getAuditoriums(id);

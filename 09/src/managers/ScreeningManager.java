@@ -11,6 +11,9 @@ import javax.ejb.Stateless;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Facade bean implements remote
+ */
 @Stateless
 public class ScreeningManager implements ScreeningManagerRemote {
 

@@ -13,7 +13,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-
+/**
+ * Bean to create pdf contains information of reservation,seats,movie
+ * Pdf also contains QRCode of Id of reservation
+ */
 @Stateless
 public class PdfCreator {
 
@@ -72,9 +75,6 @@ public class PdfCreator {
             contentStream.newLineAtOffset(20, HH - 140);
             contentStream.showText(text5);
             contentStream.endText();
-
-
-
 
             contentStream.close();
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

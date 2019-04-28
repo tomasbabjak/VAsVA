@@ -7,6 +7,10 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import java.sql.Timestamp;
 
+/**
+ * Stateless execucive bean to adding new films to database
+ */
+
 @Stateless
 @LocalBean
 public class FilmExe {

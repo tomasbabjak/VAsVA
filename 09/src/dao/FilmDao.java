@@ -1,12 +1,14 @@
 package dao;
 
 import entity.Movie;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.sql.Timestamp;
 
+/**
+ * Dao bean that working with database specifically with events related to films
+ */
 @Stateless
 public class FilmDao {
 
