@@ -76,21 +76,29 @@ public class RegistrationView {
             try {
                 Context ctx = new InitialContext();
                 CustomerManagerRemote cusRemote = (CustomerManagerRemote) ctx.lookup(JNDI);
-                cusRemote.registrate(emil.getText(), fname.getText(), lname.getText(), login.getText(), pass.getText());
+                if(!cusRemote.registrate(emil.getText(), fname.getText(), lname.getText(), login.getText(), pass.getText())){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR Dialog");
+                    alert.setHeaderText("User already exists!");
+                    alert.setContentText("This username is already used. \nPlease choose new username.");
+                    alert.showAndWait();
+                }
+                else{
+                    user = cusRemote.logIn(login.getText(),pass.getText());
+                    SceneCreator sc = new SceneCreator();
+                    try {
+                        sc.setAncestorRV(this);
+                        sc.launchUserScene(user,lan);
+                        ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                    } catch (IOException e) {
+                        LOG.log(Level.SEVERE,"IO Exception");
+                    }
+                }
                 user = cusRemote.logIn(login.getText(),pass.getText());
             } catch (NamingException e) {
                 LOG.log(Level.SEVERE,"Naming Exception registration",e);
             }
             LOG.exiting(this.getClass().getName(),"exiting registration");
-
-            SceneCreator sc = new SceneCreator();
-            try {
-                sc.setAncestorRV(this);
-                sc.launchUserScene(user,lan);
-                ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
-            } catch (IOException e) {
-                LOG.log(Level.SEVERE,"IO Exception");
-            }
         }
     }
 

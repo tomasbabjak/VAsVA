@@ -115,10 +115,10 @@ public class ManageScreeningView {
     public void createScreening(MouseEvent mouseEvent) {
         try{
             if (selectedCity.equals("") || selectedAuditorium.equals(""))
-                throw new InputMismatchException("Please complete all fields!");
+                throw new NullPointerException("Please complete all fields!");
         } catch (NullPointerException e) {
             LOG.log(Level.FINEST,"not complete fields screating screening");
-            throw new InputMismatchException("Please complete all fields!");
+            throw new NullPointerException("Please complete all fields!");
         }
 
         try {

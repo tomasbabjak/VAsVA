@@ -60,12 +60,6 @@ public class AdminView {
         this.c = c;
     }
 
-    public void sendEmailClick(ActionEvent actionEvent) {
-    }
-
-    public void editInfoClick(ActionEvent actionEvent) {
-    }
-
     public void manageMoviesClick(ActionEvent actionEvent) {
         SceneCreator sc = new SceneCreator();
         try {

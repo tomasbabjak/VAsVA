@@ -1,24 +1,24 @@
-apr 27, 2019 10:59:19 PM org.wildfly.naming.client.Version <clinit>
+apr 28, 2019 4:36:37 PM org.wildfly.naming.client.Version <clinit>
 INFO: WildFly Naming version 1.0.9.Final
-apr 27, 2019 10:59:19 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
+apr 28, 2019 4:36:37 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
 WARN: WFNAM00051: Provider URLs already given via standard mechanism; ignoring legacy property-based connection configuration
-apr 27, 2019 10:59:19 PM org.wildfly.security.Version <clinit>
+apr 28, 2019 4:36:37 PM org.wildfly.security.Version <clinit>
 INFO: ELY00001: WildFly Elytron version 1.8.0.Final
-apr 27, 2019 10:59:19 PM org.jboss.ejb.client.naming.ejb.ejbURLContextFactory <clinit>
+apr 28, 2019 4:36:37 PM org.jboss.ejb.client.naming.ejb.ejbURLContextFactory <clinit>
 INFO: EJBCLIENT000064: org.jboss.ejb.client.naming.ejb.ejbURLContextFactory is deprecated; new applications should use org.wildfly.naming.client.WildFlyInitialContextFactory instead
-apr 27, 2019 10:59:19 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
+apr 28, 2019 4:36:37 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
 WARN: WFNAM00051: Provider URLs already given via standard mechanism; ignoring legacy property-based connection configuration
-apr 27, 2019 10:59:19 PM org.xnio.Xnio <clinit>
+apr 28, 2019 4:36:37 PM org.xnio.Xnio <clinit>
 INFO: XNIO version 3.6.5.Final
-apr 27, 2019 10:59:19 PM org.xnio.nio.NioXnio <clinit>
+apr 28, 2019 4:36:37 PM org.xnio.nio.NioXnio <clinit>
 INFO: XNIO NIO Implementation Version 3.6.5.Final
-apr 27, 2019 10:59:20 PM org.jboss.threads.Version <clinit>
+apr 28, 2019 4:36:37 PM org.jboss.threads.Version <clinit>
 INFO: JBoss Threads version 2.3.3.Final
-apr 27, 2019 10:59:20 PM org.jboss.remoting3.EndpointImpl <clinit>
+apr 28, 2019 4:36:37 PM org.jboss.remoting3.EndpointImpl <clinit>
 INFO: JBoss Remoting version 5.0.8.Final
-apr 27, 2019 10:59:20 PM org.jboss.ejb.client.EJBClient <clinit>
+apr 28, 2019 4:36:37 PM org.jboss.ejb.client.EJBClient <clinit>
 INFO: JBoss EJB Client version 4.0.14.Final
-apr 27, 2019 10:59:34 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
+apr 28, 2019 4:36:43 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
 WARN: WFNAM00051: Provider URLs already given via standard mechanism; ignoring legacy property-based connection configuration
-apr 27, 2019 10:59:34 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
+apr 28, 2019 4:36:43 PM org.wildfly.naming.client.ProviderEnvironment$Builder populateFromEnvironment
 WARN: WFNAM00051: Provider URLs already given via standard mechanism; ignoring legacy property-based connection configuration

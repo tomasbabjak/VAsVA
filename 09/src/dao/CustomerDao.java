@@ -14,6 +14,18 @@ public class CustomerDao {
     @PersistenceContext(unitName = "09")
     private EntityManager entityManager;
 
+    public boolean checkUser(String username){
+        String hql = "SELECT c.id from Customer c where c.username = :username";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("username", username);
+        try {
+            query.getSingleResult();
+        }catch(NoResultException e){
+            return true;
+        }
+        return false;
+    }
+
     public void registrate(Customer customer) {
         entityManager.persist(customer);
     }

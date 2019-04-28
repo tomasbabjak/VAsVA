@@ -93,14 +93,14 @@ public class ManageFilmsView {
 
         try{
             if (filmTitle.getText().equals("") || filmDescription.getText().equals("") || filmTrailer.getText().equals(""))
-                throw new InputMismatchException("Please complete all fields!");
+                throw new NullPointerException("Please complete all fields!");
             else if (selectedImage == null) {
                 LOG.warning("not uploaded image");
-                throw new InputMismatchException("Please add the film poster!");
+                throw new NullPointerException("Please add the film poster!");
             }
         } catch (NullPointerException e) {
             LOG.warning("not complete fields");
-        throw new InputMismatchException("Please complete all fields!");
+            throw new NullPointerException("Please complete all fields!");
         }
 
         try {

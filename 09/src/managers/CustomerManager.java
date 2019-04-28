@@ -1,6 +1,7 @@
 package managers;
 
 import entity.Customer;
+import executive.CheckExe;
 import executive.LoginExe;
 import testuj.CustomerManagerRemote;
 
@@ -20,12 +21,15 @@ public class CustomerManager implements CustomerManagerRemote {
 
     @EJB
     LoginExe exe;
+    @EJB
+    CheckExe cexe;
+
 
     public Customer logIn(String name, String password) {
         return exe.login(name, password);
     }
 
-    public void registrate(String email, String fname, String lname, String name, String password) {
+    public boolean registrate(String email, String fname, String lname, String name, String password) {
 
         Customer customer = new Customer();
         customer.setEmail(email);
@@ -33,7 +37,12 @@ public class CustomerManager implements CustomerManagerRemote {
         customer.setLastName(lname);
         customer.setPassword(password);
         customer.setUsername(name);
-        exe.registrate(customer);
+
+        if(cexe.checkUser(name)) {
+            exe.registrate(customer);
+            return true;
+        }
+        else return false;
 
     }
 

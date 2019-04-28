@@ -41,18 +41,18 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="startDate" fill="WHITE" layoutX="388.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dd-mm-yyyy">
+      <Text fx:id="startDate" fill="WHITE" layoutX="406.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dd-mm-yyyy">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
       <Button fx:id="bookButton" layoutX="552.0" layoutY="337.0" mnemonicParsing="false" onAction="#goToBookingScene" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: white;" />
-      <Text fx:id="director" fill="WHITE" layoutX="338.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Director" wrappingWidth="353.28515625">
+      <Text fx:id="director" fill="WHITE" layoutX="361.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Director" wrappingWidth="353.28515625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="cast" fill="WHITE" layoutX="338.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cast" wrappingWidth="353.28515625">
+      <Text fx:id="cast" fill="WHITE" layoutX="361.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cast" wrappingWidth="341.28515625">
          <font>
             <Font size="18.0" />
          </font>
