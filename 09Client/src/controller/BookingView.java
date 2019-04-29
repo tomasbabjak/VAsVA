@@ -236,6 +236,7 @@ public class BookingView {
             lable.setTextOrigin(VPos.CENTER);
             lable.setLayoutX((-lable.getLayoutBounds().getWidth() / 2) + 15);
             lable.setLayoutY((-lable.getLayoutBounds().getHeight() / 2) + 20);
+            lable.setMouseTransparent(true);
             getChildren().add(lable);
 
             iamReserved.addListener((e, o, n) -> {
