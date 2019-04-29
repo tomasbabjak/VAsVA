@@ -14,11 +14,23 @@
       <AnchorPane layoutX="-3.0" layoutY="24.0" prefHeight="374.0" prefWidth="149.0">
          <children>
             <ComboBox fx:id="language" layoutX="24.0" layoutY="311.0" onAction="#changeLanguage" prefHeight="25.0" prefWidth="62.0" />
-            <Label fx:id="lastNameLabel" layoutX="30.0" layoutY="153.0" prefHeight="17.0" prefWidth="112.0" text="Last Name" textAlignment="CENTER" />
-            <Label fx:id="firstNameLabel" layoutX="30.0" layoutY="126.0" prefHeight="17.0" prefWidth="112.0" text="First Name" textAlignment="CENTER" />
+            <Label fx:id="lastNameLabel" layoutX="30.0" layoutY="161.0" prefHeight="17.0" prefWidth="112.0" style="-fx-font-size: 18;" text="Last Name" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="firstNameLabel" layoutX="30.0" layoutY="127.0" prefHeight="17.0" prefWidth="112.0" style="-fx-font-size: 18;" text="First Name" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
             <Separator layoutX="168.0" layoutY="11.0" orientation="VERTICAL" prefHeight="365.0" prefWidth="9.0" />
-            <Label fx:id="you" layoutX="30.0" layoutY="40.0" text="You are logged in as:" textAlignment="CENTER" />
-             <Label fx:id="login" layoutX="30.0" layoutY="70.0" prefHeight="17.0" prefWidth="112.0" text="login" textAlignment="CENTER" />
+            <Label fx:id="you" layoutX="17.0" layoutY="28.0" prefHeight="65.0" prefWidth="139.0" style="-fx-font-size: 20;" text="You are logged in as:" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+             <Label fx:id="login" layoutX="30.0" layoutY="93.0" prefHeight="17.0" prefWidth="112.0" style="-fx-font-size: 18;" text="login" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <AnchorPane id="background" layoutX="168.0" layoutY="28.0" prefHeight="371.0" prefWidth="532.0">

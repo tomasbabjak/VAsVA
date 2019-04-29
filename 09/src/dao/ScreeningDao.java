@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,4 +50,13 @@ public class ScreeningDao {
         entityManager.persist(screening);
     }
 
+    public List<Screening> getScrenings(Movie movie, Auditorium auditorium, String time) {
+        String hql = "SELECT S from Screening S WHERE S.auditorium.id = :auditoriumid AND to_char(S.screeningStart,'YYYY/MM/DD') = :time";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("auditoriumid",auditorium.getId());
+        query.setParameter("time",time);
+        List<Screening> result = new ArrayList<>();
+        result = query.getResultList();
+        return result;
+    }
 }
