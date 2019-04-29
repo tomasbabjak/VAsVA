@@ -1,10 +1,9 @@
 package executive;
 
 import dao.BookingDao;
-import entity.City;
-import entity.Movie;
-import entity.Reservation;
-import entity.Screening;
+import dao.CustomerDao;
+import entity.*;
+
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -21,6 +20,9 @@ public class BookingExe {
 
     @EJB
     BookingDao dao;
+
+    @EJB
+    CustomerDao customerDao;
 
     /**
      * Method to obtain seats that are booked for specific screening
@@ -67,6 +69,7 @@ public class BookingExe {
         byte[] imageB = null;
         byte[] pdf = null;
         long resId;
+        Customer customer;
 
         try {
             resId = dao.setReservation(customerId, screeningId, paid);
@@ -90,9 +93,10 @@ public class BookingExe {
         imageB = QrGenerator.getQRCodeImage(String.valueOf(resId));
         pdf = PdfCreator.create(imageB,movie,screening,seats);
 
-
+        customer = customerDao.getCastumerByID(customerId);
         MailSender mailSender = new MailSender();
-        mailSender.send("dannyel.minarik@gmail.com","CINEMA TICKET","Thank you for visiting",pdf,imageB);
+        //mailSender.send("babjak10@gmail.com","CINEMA TICKET","Thank you for visiting",pdf,imageB);
+        mailSender.send(customer.getEmail(),"CINEMA TICKET","Thank you for visiting",pdf,imageB);
 
         return pdf;
 

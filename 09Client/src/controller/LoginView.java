@@ -5,6 +5,8 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -33,10 +35,13 @@ public class LoginView {
     public Text wrongCredentials;
     public Label notMemeber;
     public Label signIn;
-    public ComboBox language;
+    //public ComboBox language;
     public AnchorPane pane;
+    public ImageView sk;
+    public ImageView en;
+    public ImageView sw;
 
-    public String lan;
+    public String lan = "en";
     private double xOffset;
     private double yOffset;
 
@@ -84,7 +89,7 @@ public class LoginView {
     }
 
     public void changeLanguage(){
-        lan = language.getSelectionModel().getSelectedItem().toString();
+        //lan = language.getSelectionModel().getSelectedItem().toString();
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
         logInButton.setText(rb.getString("logInButton"));
         RegButton.setText(rb.getString("regButton"));
@@ -106,16 +111,16 @@ public class LoginView {
     }
     public void initialize(){
         setPane();
-        String sk = "res/images/sk.png";
-        String en = "res/images/en.png";
-        String sw = "res/images/sw.png";
-        //language.setButtonCell();
-        language.setItems(FXCollections.observableArrayList(en,sk,sw));
-        //language.setItems(FXCollections.observableArrayList("en","sk","sw"));
-        language.getSelectionModel().selectFirst();
-        this.lan = language.getSelectionModel().getSelectedItem().toString();
+        //ImageView sk = new ImageView(new Image("res/images/sk.png"));
+        //ImageView en = new ImageView(new Image("res/images/en.png"));
+        //ImageView sw = new ImageView(new Image("res/images/sw.png"));
+        //language.setItems(FXCollections.observableArrayList(en,sk,sw));
 
-        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(language.getSelectionModel().getSelectedItem().toString()));
+        //language.setItems(FXCollections.observableArrayList("en","sk","sw"));
+        //language.getSelectionModel().selectFirst();
+        //this.lan = language.getSelectionModel().getSelectedItem().toString();
+
+        ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
         try {
             Context ctx = new InitialContext();
             cusRemote = (CustomerManagerRemote) ctx.lookup(JNDI);
@@ -126,6 +131,19 @@ public class LoginView {
         RegButton.setText(rb.getString("regButton"));
         notMemeber.setText(rb.getString("notMember"));
         signIn.setText(rb.getString("logIn"));
+    }
+
+    public void changeLan(MouseEvent mouseEvent) {
+        if(mouseEvent.getSource().equals(sk)) lan = "sk";
+        if(mouseEvent.getSource().equals(en)) lan = "en";
+        if(mouseEvent.getSource().equals(sw)) lan = "sw";
+
+        changeLanguage();
+
+    }
+
+    public void setLanguage(String lan){
+        this.lan = lan;
     }
 
 }

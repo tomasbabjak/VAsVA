@@ -5,6 +5,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -30,8 +32,11 @@ public class UserSceneView {
     public Button manageFilmsButton;
     public Button manageBookingsButton;
     public Button logOutButton;
-    public ComboBox language;
+    //public ComboBox language;
     public AnchorPane pane;
+    public ImageView sk;
+    public ImageView en;
+    public ImageView sw;
 
     private String lan;
 
@@ -40,11 +45,6 @@ public class UserSceneView {
 
     public void setAncestor(SceneCreator sceneCreator) {
 
-    }
-
-    public void changeLanguage() {
-        lan = language.getSelectionModel().getSelectedItem().toString();
-        setLanguage(lan);
     }
 
         public void setLanguage(String lan){
@@ -63,8 +63,8 @@ public class UserSceneView {
         login.setText(c.getUsername());
         lastNameLabel.setText(c.getLastName());
         firstNameLabel.setText(c.getFirstName());
-        language.setItems(FXCollections.observableArrayList("en","sk","sw"));
-        language.getSelectionModel().select(lan);
+        //language.setItems(FXCollections.observableArrayList("en","sk","sw"));
+        //language.getSelectionModel().select(lan);
         this.stage = stage;
     }
 
@@ -112,5 +112,13 @@ public class UserSceneView {
                     pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
                 }
         );
+    }
+    public void changeLan(MouseEvent mouseEvent) {
+        if(mouseEvent.getSource().equals(sk)) lan = "sk";
+        if(mouseEvent.getSource().equals(en)) lan = "en";
+        if(mouseEvent.getSource().equals(sw)) lan = "sw";
+
+        setLanguage(lan);
+
     }
 }

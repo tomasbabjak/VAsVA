@@ -105,6 +105,8 @@ public class SceneCreator {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
+        controller.setLanguage(language);
+        controller.initialize();
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
