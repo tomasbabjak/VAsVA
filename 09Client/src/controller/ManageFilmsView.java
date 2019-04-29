@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -63,6 +64,10 @@ public class ManageFilmsView {
     public Text imageLabel;
     public Button uploadPhoto;
     public Button addMovieButton;
+    public AnchorPane pane;
+
+    private double xOffset;
+    private double yOffset;
 
     Customer c;
 
@@ -70,6 +75,7 @@ public class ManageFilmsView {
 
 
     public void setUser(Customer c, String lan) {
+        setPane();
         this.lan = lan;
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
         backButton.setText(rb.getString("backButton"));
@@ -164,6 +170,19 @@ public class ManageFilmsView {
         } catch (FileNotFoundException ex) {
             LOG.log(Level.SEVERE,"opening poster image faild",ex);
         }
+    }
+
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
     }
 
 }

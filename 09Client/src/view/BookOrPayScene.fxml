@@ -11,11 +11,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookPayView">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookPayView">
     <children>
         <AnchorPane prefHeight="37.0" prefWidth="702.0">
             <children>
-                <MenuBar prefHeight="35.0" prefWidth="700.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
+                <MenuBar mouseTransparent="true" prefHeight="35.0" prefWidth="700.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
                 <Text fx:id="bookingsLabel" fill="WHITE" layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="Bookings" />
                 <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="605.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Cancel Booking" textAlignment="CENTER" textFill="#ebdfdf">
                     <font>

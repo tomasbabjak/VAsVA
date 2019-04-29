@@ -1,8 +1,11 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.application.Platform;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import testuj.CustomerManagerRemote;
 import entity.Customer;
 import javax.naming.Context;
@@ -34,6 +37,8 @@ public class RegistrationView {
     public Label un;
     public Label message;
     public Button regButton;
+    public Button backButton;
+    public AnchorPane pane;
 
     private String lan;
 
@@ -102,7 +107,15 @@ public class RegistrationView {
         }
     }
 
-    public void exit(javafx.event.ActionEvent actionEvent)  {
-        Platform.exit();
+    public void backToPrevScene(ActionEvent actionEvent) {
+        SceneCreator sc = new SceneCreator();
+        try {
+            sc.launchLogInScene(lan);
+            ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE,"openig back scene faild");
+        }
+
     }
+
 }

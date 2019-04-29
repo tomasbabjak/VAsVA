@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import java.io.IOException;
@@ -30,8 +31,13 @@ public class UserSceneView {
     public Button manageBookingsButton;
     public Button logOutButton;
     public ComboBox language;
+    public AnchorPane pane;
 
     private String lan;
+
+    private double xOffset;
+    private double yOffset;
+
     public void setAncestor(SceneCreator sceneCreator) {
 
     }
@@ -53,7 +59,7 @@ public class UserSceneView {
     }
 
     public void setStage(Stage stage) {
-
+        setPane();
         login.setText(c.getUsername());
         lastNameLabel.setText(c.getLastName());
         firstNameLabel.setText(c.getFirstName());
@@ -93,5 +99,18 @@ public class UserSceneView {
         } catch (IOException e) {
             LOG.severe("opening logout scene");
         }
+    }
+
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
     }
 }

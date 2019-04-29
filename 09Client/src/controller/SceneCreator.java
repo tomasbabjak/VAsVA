@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.util.logging.Logger;
 
@@ -31,7 +33,7 @@ public class SceneCreator {
         controller = fxmlLoader.getController();
         controller.setCustomer(c);
         controller.buildScene(movie,image,language);
-        stage.setTitle("Title");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
     }
@@ -44,7 +46,7 @@ public class SceneCreator {
         controller = fxmlLoader.getController();
         controller.setUser(c);
         controller.initialize(language);
-        stage.setTitle("Title");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
     }
@@ -58,7 +60,7 @@ public class SceneCreator {
         controller.setLanguage(language);
         controller.setUser(c);
         controller.setStage(stage);
-        stage.setTitle("Title");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
     }
@@ -72,7 +74,7 @@ public class SceneCreator {
         controller.setUser(c);
         controller.setLanguage(language);
         controller.setStage(stage);
-        stage.setTitle("Title");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
     }
@@ -85,7 +87,7 @@ public class SceneCreator {
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
         controller.initialize(language);
-        stage.setTitle("Title");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
     }
@@ -103,7 +105,7 @@ public class SceneCreator {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginScene.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
-        stage.setTitle("Title");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
     }
@@ -116,7 +118,7 @@ public class SceneCreator {
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
         controller.setUser(c, language);
-        stage.setTitle("Title");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
     }
@@ -129,7 +131,7 @@ public class SceneCreator {
         controller = fxmlLoader.getController();
         controller.setUser(c);
         controller.setMovie(movie);
-        stage.setTitle("Title");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.show();
     }

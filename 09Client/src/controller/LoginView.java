@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import testuj.CustomerManagerRemote;
 import javax.naming.Context;
@@ -33,8 +34,11 @@ public class LoginView {
     public Label notMemeber;
     public Label signIn;
     public ComboBox language;
+    public AnchorPane pane;
 
     public String lan;
+    private double xOffset;
+    private double yOffset;
 
     public void exitButton(MouseEvent mouseEvent) {
         Platform.exit();
@@ -88,8 +92,20 @@ public class LoginView {
         signIn.setText(rb.getString("logIn"));
     }
 
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
+    }
     public void initialize(){
-
+        setPane();
         language.setItems(FXCollections.observableArrayList("en","sk","sw"));
         language.getSelectionModel().selectFirst();
         this.lan = language.getSelectionModel().getSelectedItem().toString();

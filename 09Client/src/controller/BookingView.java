@@ -49,6 +49,7 @@ public class BookingView {
     boolean City = false;
     int selected_day = -1;
     BookingManagerRemote bmr = null;
+    public AnchorPane pane;
 
 
     static List<Integer> seats = new ArrayList<>();
@@ -77,6 +78,9 @@ public class BookingView {
     public Button searchButton;
     public Button bookButton;
     public Text bookingsLabel;
+
+    private double xOffset;
+    private double yOffset;
 
     private String lan;
 
@@ -139,7 +143,21 @@ public class BookingView {
         timeDropDownList.setItems(FXCollections.observableArrayList(times));
     }
 
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
+    }
+
     public void init(String lan){
+        setPane();
         this.lan = lan;
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
         backButton.setText(rb.getString("backButton"));
