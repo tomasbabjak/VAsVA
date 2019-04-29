@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -34,6 +35,10 @@ public class SelectedFilmView {
     public Text premiereDate;
     public Text directorLabel;
     public Text castLabel;
+    public AnchorPane pane;
+
+    private double xOffset;
+    private double yOffset;
 
     private String lan;
 
@@ -93,6 +98,7 @@ public class SelectedFilmView {
 
 
     public void buildScene(Movie movie, Image image, String lan){
+        setPane();
         this.lan = lan;
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
         windowTitleLabel.setText(rb.getString("userViewLabel"));
@@ -113,4 +119,16 @@ public class SelectedFilmView {
         cast.setText(movie.getMovieCast());
     }
 
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
+    }
 }

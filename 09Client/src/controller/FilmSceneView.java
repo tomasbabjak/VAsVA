@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -47,6 +48,10 @@ public class FilmSceneView{
     String id;
     @FXML
     Text allFilms;
+    public AnchorPane pane;
+
+    private double xOffset;
+    private double yOffset;
 
     List<Movie> movies = null;
     HBox hb = new HBox();
@@ -77,6 +82,7 @@ public class FilmSceneView{
 
 
     public void initialize(String lan) {
+        setPane();
         this.lan = lan;
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
 
@@ -158,7 +164,18 @@ public class FilmSceneView{
 
 
 
-
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
+    }
 
 
 }

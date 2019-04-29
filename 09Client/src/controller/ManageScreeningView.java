@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import testuj.ScreeningManagerRemote;
 import javax.naming.Context;
@@ -37,6 +38,10 @@ public class ManageScreeningView {
     public Label cityLabel;
     public Text dateLabel;
     public Button addScreening;
+    public AnchorPane pane;
+
+    private double xOffset;
+    private double yOffset;
 
     private String lan;
 
@@ -64,6 +69,7 @@ public class ManageScreeningView {
     }
 
     public void init(String lan){
+        setPane();
         this.lan = lan;
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
         backButton.setText(rb.getString("backButton"));
@@ -160,6 +166,18 @@ public class ManageScreeningView {
         alert.showAndWait();
     }
 
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
+    }
 
     public void picked_date(ActionEvent actionEvent) {
     }

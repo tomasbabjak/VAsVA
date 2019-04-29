@@ -7,6 +7,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import property.PropertyReader;
 import testuj.BookingManagerRemote;
@@ -58,6 +59,10 @@ public class BookPayView {
     public Text bookingsLabel;
     public Label priceLabel;
     public Label seatsLabel;
+    public AnchorPane pane;
+
+    private double xOffset;
+    private double yOffset;
 
     public void backToPrevScene(ActionEvent actionEvent) {
         ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -118,7 +123,21 @@ public class BookPayView {
 
     }
 
-    public void init(Movie movie, Screening screening, List<Integer> seats, BookingManagerRemote bmr,String lan, BookingView bookingView){
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
+    }
+
+    public void init(Movie movie, Screening screening, List<Integer> seats, BookingManagerRemote bmr,String lan,BookingView bookingView){
+        setPane();
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
         this.bookingView = bookingView;
         backButton.setText(rb.getString("backButton"));

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -26,13 +27,17 @@ public class AdminView {
     public Button manageBookingsButton;
     public Button logOutButton;
     public ComboBox language;
+    public AnchorPane pane;
+
+    private double xOffset;
+    private double yOffset;
 
     Customer c;
     private Stage stage;
     private String lan;
 
     public void setStage(Stage stage) {
-
+        setPane();
         login.setText(c.getUsername());
         lastNameLabel.setText(c.getLastName());
         firstNameLabel.setText(c.getFirstName());
@@ -88,5 +93,18 @@ public class AdminView {
         } catch (IOException e) {
             LOG.log(Level.SEVERE,"cannot open back scene",e);
         }
+    }
+
+    public void setPane(){
+        pane.setOnMousePressed(e->{
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+                }
+        );
+        pane.setOnMouseDragged(e->{
+                    pane.getScene().getWindow().setX(e.getScreenX() - xOffset);
+                    pane.getScene().getWindow().setY(e.getScreenY() - yOffset);
+                }
+        );
     }
 }
