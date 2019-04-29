@@ -17,6 +17,7 @@ import java.util.List;
  * Bean to create pdf contains information of reservation,seats,movie
  * Pdf also contains QRCode of Id of reservation
  */
+
 @Stateless
 public class PdfCreator {
 

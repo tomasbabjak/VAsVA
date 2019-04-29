@@ -41,15 +41,19 @@ public class ScreeningExe {
     public boolean checkPos(Movie movie, Auditorium auditorium, Timestamp timestamp){
         String time = new SimpleDateFormat("yyyy/MM/dd").format(timestamp);
         List<Screening> screenings = dao.getScrenings(movie,auditorium,time);
-        long tmp;
-        long tmp2;
-        tmp2 = (timestamp.getHours() * 60) + timestamp.getMinutes();
-        System.out.println("tmp 2 je" + tmp2);
+        long zacS;
+        long konS;
+        long zacI;
+        long konI;
+        zacI = (timestamp.getHours() * 60) + timestamp.getMinutes();
+        konI = (timestamp.getHours() * 60) + timestamp.getMinutes() + movie.getDurationMin() + 30;
+        System.out.println("zacI " + zacI + " konI " +konI);
         for(Screening sc : screenings){
-            tmp = (sc.getScreeningStart().getHours() * 60) + sc.getScreeningStart().getMinutes() + sc.getMovie().getDurationMin();
-            System.out.println("tmp je" + tmp);
-            if(tmp + 30 > tmp2){
-                System.out.println(tmp2 + "  " + tmp + " false");
+            zacS = (sc.getScreeningStart().getHours() * 60) + sc.getScreeningStart().getMinutes();
+            konS = (sc.getScreeningStart().getHours() * 60) + sc.getScreeningStart().getMinutes() + sc.getMovie().getDurationMin() + 30;
+            System.out.println("zacS " + zacS + " konS " +konS);
+            if((zacI >= zacS && zacI <= konS) || (konI >= zacS && konI <= konS) || (zacI <= zacS && konI >= konS)){
+                System.out.println("false to insert ");
                 return false;
             }
         }
