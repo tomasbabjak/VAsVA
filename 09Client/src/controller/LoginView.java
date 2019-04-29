@@ -106,7 +106,12 @@ public class LoginView {
     }
     public void initialize(){
         setPane();
-        language.setItems(FXCollections.observableArrayList("en","sk","sw"));
+        String sk = "res/images/sk.png";
+        String en = "res/images/en.png";
+        String sw = "res/images/sw.png";
+        //language.setButtonCell();
+        language.setItems(FXCollections.observableArrayList(en,sk,sw));
+        //language.setItems(FXCollections.observableArrayList("en","sk","sw"));
         language.getSelectionModel().selectFirst();
         this.lan = language.getSelectionModel().getSelectedItem().toString();
 
