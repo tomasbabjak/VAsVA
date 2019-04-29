@@ -1,12 +1,14 @@
 package dao;
 
 import entity.Customer;
+import entity.Reservation;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Dao bean that working with database specifically with events related to customer
@@ -54,4 +56,15 @@ public class CustomerDao {
     }
 
 
+    public List<Reservation> getReservations(Customer customer) {
+        String hql = "SELECT R from Reservation R " +
+                "where R.customer.id = :customerId ";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("customerId",customer.getId());
+        try {
+            return query.getResultList();
+        }catch (NoResultException e){
+            return null;
+        }
+    }
 }
