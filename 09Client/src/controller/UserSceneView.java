@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.*;
@@ -15,7 +16,9 @@ import testuj.CustomerManagerRemote;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -144,6 +147,19 @@ public class UserSceneView {
         }catch (NamingException e){
             LOG.log(Level.SEVERE,"Naming exeption, initialContext",e);
         }
+        try {
+            String projdir = System.getProperty("user.dir");
+            File file = new File(projdir + "\\09Client\\res\\images\\sk.png");
+            sk.setImage(new Image(String.valueOf(file.toURL())));
+            file = new File(projdir + "\\09Client\\res\\images\\en.png");
+            en.setImage(new Image(String.valueOf(file.toURL())));
+            file = new File(projdir + "\\09Client\\res\\images\\sw.png");
+            sw.setImage(new Image(String.valueOf(file.toURL())));
+        }catch (MalformedURLException e) {
+            LOG.severe("cannot load flags images");
+        }
+
+
     }
 
     public static String fixedLengthString(String string) {

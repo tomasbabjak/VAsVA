@@ -198,7 +198,8 @@ public class BookingView {
         }
         obsadene = bmr.getReservedSeats((int) selectedScree.getId());
         addTab("1",theater1(seatPane,theater1));
-        File file = new File("C:\\Users\\minar\\Desktop\\VAVA_intellij\\09Client\\res\\platno.png");
+        String projdir = System.getProperty("user.dir");
+        File file = new File(projdir + "\\09Client\\res\\platno.png");
         Image image = new Image(file.toURI().toString());
         Image.setCache(true);
         Image.setImage(image);

@@ -6,11 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Locale;
@@ -107,7 +111,23 @@ public class AdminView {
                 }
         );
     }
-    public void changeLan(MouseEvent mouseEvent) {
+
+    public void initialize() {
+        try {
+            String projdir = System.getProperty("user.dir");
+            File file = new File(projdir + "\\09Client\\res\\images\\sk.png");
+            sk.setImage(new Image(String.valueOf(file.toURL())));
+            file = new File(projdir + "\\09Client\\res\\images\\en.png");
+            en.setImage(new Image(String.valueOf(file.toURL())));
+            file = new File(projdir + "\\09Client\\res\\images\\sw.png");
+            sw.setImage(new Image(String.valueOf(file.toURL())));
+        } catch (MalformedURLException e) {
+            LOG.severe("cannot load flags image");
+        }
+
+    }
+
+        public void changeLan(MouseEvent mouseEvent) {
         if(mouseEvent.getSource().equals(sk)) lan = "sk";
         if(mouseEvent.getSource().equals(en)) lan = "en";
         if(mouseEvent.getSource().equals(sw)) lan = "sw";

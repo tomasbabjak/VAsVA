@@ -2,7 +2,6 @@ package controller;
 
 import entity.Customer;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -14,7 +13,9 @@ import testuj.CustomerManagerRemote;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.logging.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -109,16 +110,21 @@ public class LoginView {
                 }
         );
     }
-    public void initialize(){
-        setPane();
-        //ImageView sk = new ImageView(new Image("res/images/sk.png"));
-        //ImageView en = new ImageView(new Image("res/images/en.png"));
-        //ImageView sw = new ImageView(new Image("res/images/sw.png"));
-        //language.setItems(FXCollections.observableArrayList(en,sk,sw));
 
-        //language.setItems(FXCollections.observableArrayList("en","sk","sw"));
-        //language.getSelectionModel().selectFirst();
-        //this.lan = language.getSelectionModel().getSelectedItem().toString();
+    public void initialize() throws MalformedURLException {
+        setPane();
+        String projdir = System.getProperty("user.dir");
+        File file = new File(projdir + "\\09Client\\res\\images\\sk.png");
+        sk.setImage(new Image(String.valueOf(file.toURL())));
+        file = new File(projdir + "\\09Client\\res\\images\\en.png");
+        en.setImage(new Image(String.valueOf(file.toURL())));
+        file = new File(projdir + "\\09Client\\res\\images\\sw.png");
+        sw.setImage(new Image(String.valueOf(file.toURL())));
+       // language.setItems(FXCollections.observableArrayList(en,sk,sw));
+
+       // language.setItems(FXCollections.observableArrayList("en","sk","sw"));
+       // language.getSelectionModel().selectFirst();
+       // this.lan = language.getSelectionModel().getSelectedItem().toString();
 
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
         try {

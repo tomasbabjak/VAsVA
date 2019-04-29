@@ -52,17 +52,17 @@
 <!--      <ComboBox fx:id="language" layoutX="27.0" layoutY="33.0" onAction="#changeLanguage" prefHeight="25.0" prefWidth="62.0" />-->
       <ImageView fx:id="sk" fitHeight="20.0" fitWidth="30.0" layoutX="5.0" layoutY="7.0" onMouseClicked="#changeLan" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/D:/FIIT/4.%20semester/VAVA/VAsVA/09Client/res/images/sk.png" />
+            <!-- <Image url="file:/D:/FIIT/4.%20semester/VAVA/VAsVA/09Client/res/images/sk.png" /> -->
          </image>
       </ImageView>
       <ImageView fx:id="en" fitHeight="20.0" fitWidth="30.0" layoutX="27.0" layoutY="7.0" onMouseClicked="#changeLan" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/D:/FIIT/4.%20semester/VAVA/VAsVA/09Client/res/images/en.png" />
+            <!-- <Image url="file:/D:/FIIT/4.%20semester/VAVA/VAsVA/09Client/res/images/en.png" /> -->
          </image>
       </ImageView>
       <ImageView fx:id="sw" fitHeight="20.0" fitWidth="30.0" layoutX="49.0" layoutY="7.0" onMouseClicked="#changeLan" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/D:/FIIT/4.%20semester/VAVA/VAsVA/09Client/res/images/sw.png" />
+            <!-- <Image url="file:/D:/FIIT/4.%20semester/VAVA/VAsVA/09Client/res/images/sw.png" /> -->
          </image>
       </ImageView>
    </children>
