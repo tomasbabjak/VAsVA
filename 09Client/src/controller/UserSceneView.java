@@ -1,16 +1,24 @@
 package controller;
 
-import entity.Customer;
+import entity.*;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
+import testuj.CustomerManagerRemote;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -19,10 +27,15 @@ public class UserSceneView {
 
     private static final Logger LOG = Logger.getLogger(UserSceneView.class.getName());
 
+    private static final String JNDI = "ejb:AE09/09WAR/CustomerManager!testuj.CustomerManagerRemote";
+    public ListView listView;
+
     Customer c;
     LoginView ancestor;
     private Stage stage;
     SceneCreator sceneCreator;
+    CustomerManagerRemote cmr = null;
+    List<String> cell = new ArrayList<>();
 
     public Label lastNameLabel;
     public Label firstNameLabel;
@@ -39,6 +52,7 @@ public class UserSceneView {
     public ImageView sw;
 
     private String lan;
+
 
     private double xOffset;
     private double yOffset;
@@ -89,6 +103,27 @@ public class UserSceneView {
     }
 
     public void manageBookingsClick(ActionEvent actionEvent) {
+       if(!listView.isVisible()) {
+           List<Reservation> reservations = cmr.getReservations(c);
+           cell.clear();
+           for (Reservation res : reservations) {
+               String time = "" + res.getScreening().getScreeningStart().getHours() + ":" + res.getScreening().getScreeningStart().getMinutes();
+               String date = "" + res.getScreening().getScreeningStart().getDate() + "." + res.getScreening().getScreeningStart().getMonth() + "." + (res.getScreening().getScreeningStart().getYear()+1900);
+               String paid = "NOT PAID";
+               if (res.isPaid()) paid = "PAID";
+               String text = fixedLengthString(res.getScreening().getMovie().getTitle()) + " |    " + date + "    |    " + time + "    |    " + res.getScreening().getAuditorium().getName() + "    |    " + fixedLengthString(res.getScreening().getAuditorium().getCity().getCityName()) + "    |    " + paid;
+               cell.add(text);
+           }
+
+           listView.setItems(FXCollections.observableArrayList(cell));
+           listView.setVisible(true);
+       }else {
+           listView.setVisible(false);
+       }
+
+
+
+
     }
 
     public void logOutClick(ActionEvent actionEvent){
@@ -100,6 +135,22 @@ public class UserSceneView {
             LOG.severe("opening logout scene");
         }
     }
+
+
+    public void initialize(){
+        try {
+            Context ctx = new InitialContext();
+            cmr = (CustomerManagerRemote) ctx.lookup(JNDI);
+        }catch (NamingException e){
+            LOG.log(Level.SEVERE,"Naming exeption, initialContext",e);
+        }
+    }
+
+    public static String fixedLengthString(String string) {
+        int length = 30 - string.length();
+        return String.format("%-" + length + "." + length + "s", string);
+    }
+
 
     public void setPane(){
         pane.setOnMousePressed(e->{

@@ -1,13 +1,13 @@
 package managers;
 
 import entity.Customer;
+import entity.Reservation;
 import executive.CheckExe;
 import executive.LoginExe;
 import testuj.CustomerManagerRemote;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * Facade bean implements remote
@@ -45,8 +45,10 @@ public class CustomerManager implements CustomerManagerRemote {
 
     }
 
-
-
+    @Override
+    public List<Reservation> getReservations(Customer customer) {
+        return exe.getReservations(customer);
+    }
 
 
 }

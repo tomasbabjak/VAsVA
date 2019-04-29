@@ -2,9 +2,12 @@ package executive;
 
 import dao.CustomerDao;
 import entity.Customer;
+import entity.Reservation;
+
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import java.util.List;
 
 /**
  * Stateless executive bean use to verify or registrate user
@@ -51,5 +54,9 @@ public class LoginExe {
     }
 
 
-
+    public List<Reservation> getReservations(Customer customer) {
+        List<Reservation> results  = dao.getReservations(customer);
+        System.out.println(results.get(0).getScreening().getMovie().getTitle());
+        return results;
+    }
 }

@@ -16,7 +16,8 @@ public class PropertyReader {
             prop = new Properties();
         }
         try {
-            prop.load(new FileInputStream("D:\\FIIT\\4. semester\\VAVA\\VAsVA\\09Client\\etc\\config.properties"));
+            //prop.load(new FileInputStream("D:\\FIIT\\4. semester\\VAVA\\VAsVA\\09Client\\etc\\config.properties"));
+            prop.load(new FileInputStream("C:\\Users\\minar\\Desktop\\VAVA_intellij\\09Client\\etc\\config.properties"));
         } catch (IOException e) {
             LOG.severe("property file was not found");
         }
