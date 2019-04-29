@@ -98,7 +98,7 @@ public class BookingView {
             Parent parent = fxmlLoader.load();
             controller = fxmlLoader.getController();
             //  controller.setScreening_id(1);
-            controller.init(movie,selectedScree,seats,bmr,lan);
+            controller.init(movie,selectedScree,seats,bmr,lan,this);
 
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Title");
@@ -300,6 +300,10 @@ public class BookingView {
     }
 
     void addTab(String label, Region node) {
+    }
+
+    public void refresh(){
+        search(null);
     }
 
 }

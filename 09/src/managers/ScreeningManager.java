@@ -41,4 +41,9 @@ public class ScreeningManager implements ScreeningManagerRemote {
         screeningExe.setScreening(movie,auditorium,screeningStart);
     }
 
+    @Override
+    public boolean checkPos(Movie movie, Auditorium auditorium, Timestamp screeningStart){
+       return screeningExe.checkPos(movie, auditorium, screeningStart);
+    }
+
 }

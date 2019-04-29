@@ -31,6 +31,7 @@ public class BookPayView {
     BookingManagerRemote bmr;
     List<Integer> seats;
     byte[] byteFile;
+    BookingView bookingView;
 
     public Button backButton;
     public Label Movie_title;
@@ -65,6 +66,7 @@ public class BookPayView {
 
     public void backToPrevScene(ActionEvent actionEvent) {
         ((javafx.scene.Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        bookingView.refresh();
     }
 
     public void reserve(ActionEvent actionEvent) {
@@ -134,9 +136,10 @@ public class BookPayView {
         );
     }
 
-    public void init(Movie movie, Screening screening, List<Integer> seats, BookingManagerRemote bmr,String lan){
+    public void init(Movie movie, Screening screening, List<Integer> seats, BookingManagerRemote bmr,String lan,BookingView bookingView){
         setPane();
         ResourceBundle rb =	ResourceBundle.getBundle("Label", Locale.forLanguageTag(lan));
+        this.bookingView = bookingView;
         backButton.setText(rb.getString("backButton"));
         dateLabel.setText(rb.getString("dateLabel"));
         timeLabel.setText(rb.getString("timeLabel"));
@@ -218,6 +221,7 @@ public class BookPayView {
             //close
         }
         ((javafx.scene.Node) (act.getSource())).getScene().getWindow().hide();
+        bookingView.refresh();
     }
 
 

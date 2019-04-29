@@ -12,7 +12,12 @@ import java.util.List;
 public interface ScreeningManagerRemote {
 
     List<City> getCities();
+
     List<Auditorium> getAuditoriums(long id);
+
     void setScreening(Movie movie, Auditorium auditorium, Timestamp screeningStart);
+
+    boolean checkPos(Movie movie, Auditorium auditorium, Timestamp screeningStart);
+
 
 }

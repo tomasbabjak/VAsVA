@@ -100,12 +100,12 @@ public class ManageScreeningView {
 
     public void selectedCity(ActionEvent actionEvent) {
         selectedCity = (City)(cityBox.getSelectionModel().getSelectedItem());
-        try {
-            Context ctx = new InitialContext();
-            smr = (ScreeningManagerRemote) ctx.lookup(JNDI1);
-        }catch (NamingException e){
-            LOG.log(Level.SEVERE,"InitialContext",e);
-        }
+//        try {
+//            Context ctx = new InitialContext();
+//            smr = (ScreeningManagerRemote) ctx.lookup(JNDI1);
+//        }catch (NamingException e){
+//            LOG.log(Level.SEVERE,"InitialContext",e);
+//        }
         System.out.println(selectedCity.getCityName());
         auditoriums = smr.getAuditoriums(selectedCity.getCityId());
         auditoriumBox.setItems(FXCollections.observableArrayList(auditoriums));
@@ -127,33 +127,43 @@ public class ManageScreeningView {
             throw new NullPointerException("Please complete all fields!");
         }
 
-        try {
-            LocalDate ld = datePicker.getValue();
-            Calendar c =  Calendar.getInstance();
-            int hour = (int)timeDropDownListHours.getSelectionModel().getSelectedItem();
-            int minute = (int) timeDropDownListMinutes.getSelectionModel().getSelectedItem();
-            c.set(ld.getYear(), ld.getMonthValue(), ld.getDayOfMonth(), hour, minute, 0);
 
-            Timestamp timestamp = new Timestamp(c.getTimeInMillis());
-            Context ctx = new InitialContext();
-            ScreeningManagerRemote screeningManagerRemote = (ScreeningManagerRemote) ctx.lookup(JNDI1);
-            screeningManagerRemote.setScreening(movie,selectedAuditorium,timestamp);
+        LocalDate ld = datePicker.getValue();
+        Calendar calendar =  Calendar.getInstance();
+        int hour = (int)timeDropDownListHours.getSelectionModel().getSelectedItem();
+        int minute = (int) timeDropDownListMinutes.getSelectionModel().getSelectedItem();
+        calendar.set(ld.getYear(), Integer.valueOf(ld.getMonthValue()) - 1 , ld.getDayOfMonth(), hour, minute, 0);
 
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+        Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
+//      Context ctx = new InitialContext();
+//      ScreeningManagerRemote screeningManagerRemote = (ScreeningManagerRemote) ctx.lookup(JNDI1);
+        if(smr.checkPos(movie,selectedAuditorium,timestamp)) {
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "New Screening has been added!", ButtonType.OK);
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.OK) {
-            SceneCreator sc = new SceneCreator();
-            try {
-                sc.launchSceneMovies(c,lan);
-                ((javafx.scene.Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-            } catch (IOException e) {
-                LOG.severe("opening movies scene");
+            smr.setScreening(movie, selectedAuditorium, timestamp);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "New Screening has been added!", ButtonType.OK);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.OK) {
+                SceneCreator sc = new SceneCreator();
+                try {
+                    sc.launchSceneMovies(c, lan);
+                    ((javafx.scene.Node) (mouseEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                    LOG.severe("opening movies scene");
+                }
             }
+        }else {
+            showAlert("Cannot add screening due to conflict with another screening");
         }
+
+    }
+
+    private void showAlert(String text){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR Dialog");
+        alert.setHeaderText(text);
+        alert.setContentText("Please, try again");
+        alert.showAndWait();
     }
 
     public void setPane(){
