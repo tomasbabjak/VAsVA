@@ -67,5 +67,15 @@
             <Font size="18.0" />
          </font>
       </Text>
+      <Text fx:id="length" fill="WHITE" layoutX="262.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Length:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="movieLength" fill="WHITE" layoutX="406.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="len">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

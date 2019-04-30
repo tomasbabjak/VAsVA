@@ -94,8 +94,8 @@ public class BookingExe {
 
         customer = customerDao.getCastumerByID(customerId);
         MailSender mailSender = new MailSender();
-        mailSender.send("dannyel.minarik@gmail.com","CINEMA TICKET","Thank you for visiting",pdf,imageB);
-        //mailSender.send(customer.getEmail(),"CINEMA TICKET","Thank you for visiting",pdf,imageB);
+        //mailSender.send("dannyel.minarik@gmail.com","CINEMA TICKET","Thank you for visiting",pdf,imageB);
+        mailSender.send(customer.getEmail(),"CINEMA TICKET","Thank you for visiting",pdf,imageB);
 
         return pdf;
 

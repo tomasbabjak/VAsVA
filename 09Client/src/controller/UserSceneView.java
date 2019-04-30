@@ -53,9 +53,10 @@ public class UserSceneView {
     public ImageView sk;
     public ImageView en;
     public ImageView sw;
+    public ImageView logo;
+    public Label welcome;
 
     private String lan;
-
 
     private double xOffset;
     private double yOffset;
@@ -72,7 +73,7 @@ public class UserSceneView {
         manageFilmsButton.setText(rb.getString("viewFilms"));
         manageBookingsButton.setText(rb.getString("viewBookings"));
         logOutButton.setText(rb.getString("logOutButton"));
-
+        welcome.setText(rb.getString("welcome"));
     }
 
     public void setStage(Stage stage) {
@@ -87,12 +88,6 @@ public class UserSceneView {
 
     public void setUser(Customer c) {
         this.c = c;
-    }
-
-    public void editInfoClick(ActionEvent actionEvent) {
-    }
-
-    public void sendEmailClick(ActionEvent actionEvent) {
     }
 
     public void manageMoviesClick(ActionEvent actionEvent) {
@@ -155,6 +150,9 @@ public class UserSceneView {
             en.setImage(new Image(String.valueOf(file.toURL())));
             file = new File(projdir + "\\09Client\\res\\images\\sw.png");
             sw.setImage(new Image(String.valueOf(file.toURL())));
+            file = new File(projdir + "\\09Client\\res\\images\\unicinema1.png");
+            logo.setImage(new Image(String.valueOf(file.toURL())));
+
         }catch (MalformedURLException e) {
             LOG.severe("cannot load flags images");
         }
@@ -186,6 +184,5 @@ public class UserSceneView {
         if(mouseEvent.getSource().equals(sw)) lan = "sw";
 
         setLanguage(lan);
-
     }
 }

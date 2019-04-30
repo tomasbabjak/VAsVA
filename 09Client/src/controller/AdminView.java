@@ -37,6 +37,8 @@ public class AdminView {
     public ImageView sk;
     public ImageView en;
     public ImageView sw;
+    public ImageView logo;
+    public Label welcome;
 
     private double xOffset;
     private double yOffset;
@@ -63,7 +65,8 @@ public class AdminView {
         manageFilmsButton.setText(rb.getString("addFilm"));
         manageBookingsButton.setText(rb.getString("addScreening"));
         logOutButton.setText(rb.getString("logOutButton"));
-    }
+        welcome.setText(rb.getString("welcome"));
+        }
 
     public void setUser(Customer c) {
         this.c = c;
@@ -121,6 +124,9 @@ public class AdminView {
             en.setImage(new Image(String.valueOf(file.toURL())));
             file = new File(projdir + "\\09Client\\res\\images\\sw.png");
             sw.setImage(new Image(String.valueOf(file.toURL())));
+            file = new File(projdir + "\\09Client\\res\\images\\unicinema1.png");
+            logo.setImage(new Image(String.valueOf(file.toURL())));
+
         } catch (MalformedURLException e) {
             LOG.severe("cannot load flags image");
         }

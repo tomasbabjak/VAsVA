@@ -28,9 +28,9 @@ public class PdfCreator {
         float HH = page.getMediaBox().getHeight();
         float WW = page.getMediaBox().getWidth();
         try {
-            //PDImageXObject image = PDImageXObject.createFromFile("D:\\FIIT\\4. semester\\VAVA\\VAsVA\\proxy.duckduckgo.com.png",document);
+            PDImageXObject image = PDImageXObject.createFromFile("D:\\FIIT\\4. semester\\VAVA\\VAsVA\\proxy.duckduckgo.com.png",document);
             //String projdir = System.getProperty("user.dir");
-            PDImageXObject image = PDImageXObject.createFromFile("C:\\Users\\minar\\Desktop\\VAVA_intellij\\proxy.duckduckgo.com.png",document);
+            //PDImageXObject image = PDImageXObject.createFromFile("C:\\Users\\minar\\Desktop\\VAVA_intellij\\proxy.duckduckgo.com.png",document);
             image.setHeight(120);
             image.setWidth((int)page.getMediaBox().getWidth());
             PDImageXObject qrimage = PDImageXObject.createFromByteArray(document,imageB,"qrcode");
@@ -41,13 +41,13 @@ public class PdfCreator {
             contentStream.beginText();
             contentStream.setFont(PDType1Font.TIMES_BOLD_ITALIC, 26);
             contentStream.newLineAtOffset(20, HH - 60 );
-            String text = "CINEMAMAMA";
+            String text = "UNICINEMA";
             contentStream.showText(text);
             contentStream.endText();
             //
             contentStream.beginText();
             contentStream.setFont(PDType1Font.TIMES_BOLD_ITALIC, 14);
-            String text2 = "Movie: " + movie.getTitle() + "     Movie lenght:" + movie.getDurationMin();
+            String text2 = "Movie: " + movie.getTitle() + "     Movie lenght:" + movie.getDurationMin() + " min";
             contentStream.newLineAtOffset(20, HH - 80);
             contentStream.showText(text2);
             contentStream.endText();
@@ -72,7 +72,7 @@ public class PdfCreator {
             contentStream.endText();
             //
             contentStream.beginText();
-            String cas = screening.getScreeningStart().toString();
+            String cas = screening.getScreeningStart().getHours() + ":" + screening.getScreeningStart().getMinutes();
             contentStream.setFont(PDType1Font.TIMES_BOLD_ITALIC, 14);
             String text5 = "Screening date: " + cas;
             contentStream.newLineAtOffset(20, HH - 140);

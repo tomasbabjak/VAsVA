@@ -41,6 +41,7 @@ public class LoginView {
     public ImageView sk;
     public ImageView en;
     public ImageView sw;
+    public ImageView logo;
 
     public String lan = "en";
     private double xOffset;
@@ -96,6 +97,9 @@ public class LoginView {
         RegButton.setText(rb.getString("regButton"));
         notMemeber.setText(rb.getString("notMember"));
         signIn.setText(rb.getString("logIn"));
+        usernameBox.setPromptText(rb.getString("userName"));
+        passwordBox.setPromptText(rb.getString("pass"));
+
     }
 
     public void setPane(){
@@ -121,6 +125,8 @@ public class LoginView {
         file = new File(projdir + "\\09Client\\res\\images\\sw.png");
         sw.setImage(new Image(String.valueOf(file.toURL())));
        // language.setItems(FXCollections.observableArrayList(en,sk,sw));
+        file = new File(projdir + "\\09Client\\res\\images\\unicinema1.png");
+        logo.setImage(new Image(String.valueOf(file.toURL())));
 
        // language.setItems(FXCollections.observableArrayList("en","sk","sw"));
        // language.getSelectionModel().selectFirst();
@@ -137,6 +143,8 @@ public class LoginView {
         RegButton.setText(rb.getString("regButton"));
         notMemeber.setText(rb.getString("notMember"));
         signIn.setText(rb.getString("logIn"));
+        usernameBox.setPromptText(rb.getString("userName"));
+        passwordBox.setPromptText(rb.getString("pass"));
     }
 
     public void changeLan(MouseEvent mouseEvent) {

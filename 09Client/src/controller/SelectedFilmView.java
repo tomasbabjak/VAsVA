@@ -36,6 +36,8 @@ public class SelectedFilmView {
     public Text directorLabel;
     public Text castLabel;
     public AnchorPane pane;
+    public Text movieLength;
+    public Text length;
 
     private double xOffset;
     private double yOffset;
@@ -106,6 +108,7 @@ public class SelectedFilmView {
         premiereDate.setText(rb.getString("premiereDate"));
         castLabel.setText(rb.getString("castLabel"));
         backButton.setText(rb.getString("backButton"));
+        length.setText(rb.getString("lengthLabel"));
 
         this.movie = movie;
 //        Integer.toString(movie.getPremiere_date().getDate());
@@ -117,6 +120,7 @@ public class SelectedFilmView {
         startDate.setText((movie.getPremiere_date().getDate()) + "." + (movie.getPremiere_date().getMonth()) + "." + (movie.getPremiere_date().getYear() + 1900));
         director.setText(movie.getDirector());
         cast.setText(movie.getMovieCast());
+        movieLength.setText(movie.getDurationMin() + " min");
     }
 
     public void setPane(){
