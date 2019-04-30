@@ -29,8 +29,8 @@ public class PdfCreator {
         float WW = page.getMediaBox().getWidth();
         try {
             //PDImageXObject image = PDImageXObject.createFromFile("D:\\FIIT\\4. semester\\VAVA\\VAsVA\\proxy.duckduckgo.com.png",document);
-            //String projdir = System.getProperty("user.dir");
-            PDImageXObject image = PDImageXObject.createFromFile("C:\\Users\\minar\\Desktop\\VAVA_intellij\\proxy.duckduckgo.com.png",document);
+            String projdir = System.getProperty("jboss.home.dir") + "\\standalone\\tmp\\res\\film.png";
+            PDImageXObject image = PDImageXObject.createFromFile(projdir,document);
             image.setHeight(120);
             image.setWidth((int)page.getMediaBox().getWidth());
             PDImageXObject qrimage = PDImageXObject.createFromByteArray(document,imageB,"qrcode");
