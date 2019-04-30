@@ -1,0 +1,293 @@
+commit 9b74e0b77c3e6010f9a2dcdd26c8afe7e51a75d2
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Tue Apr 30 15:49:00 2019 +0200
+
+    scene changes
+
+commit 01fad672a6177e6ff5b17fdacaf9bb34e46f4a93
+Merge: 883ba7f 06b411c
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Tue Apr 30 15:40:45 2019 +0200
+
+    merge conf
+
+commit 883ba7f0f6ca45b41dba4d7fde90d1843929bbfb
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Tue Apr 30 15:33:59 2019 +0200
+
+    Graphics
+
+commit 06b411c02cc9d60deb8b380f01d766fb21374d5a
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Tue Apr 30 12:40:22 2019 +0200
+
+    deleting unnecessary files
+
+commit 3fa89b879dbdbc515565d8614664a183e85ddf06
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Tue Apr 30 11:53:12 2019 +0200
+
+    path setings
+
+commit 7ad6b93bc1dae55efe677c69163a945f4bf6563b
+Merge: cc3c6c2 30cc450
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Tue Apr 30 00:28:34 2019 +0200
+
+    merging
+
+commit cc3c6c25839506cdbe84020b0559fcbbc34e5514
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Tue Apr 30 00:26:26 2019 +0200
+
+    flags changes
+
+commit 30cc450fa0b1fa1024ad991816cd504bafee54e2
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Tue Apr 30 00:26:12 2019 +0200
+
+    make-ups
+
+commit 524721bed57b2ee9cb6713e1a1d9232a30564281
+Merge: 27d08a2 addbfb2
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Mon Apr 29 23:16:03 2019 +0200
+
+    merge conflict
+
+commit 27d08a26de15377fb5f0ae4cc1ab59f78f6a00cf
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Mon Apr 29 23:14:30 2019 +0200
+
+    Flags + user email
+
+commit addbfb24f004c28d2665e7634062c0523246b564
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Mon Apr 29 21:09:07 2019 +0200
+
+    booking history
+
+commit ef93a7812f827f7447f00a56a4d7bc7020d33300
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Mon Apr 29 19:26:05 2019 +0200
+
+    scrennig insertion update
+
+commit e0643f47bed7a61c5ce376af19fc5fb40b7f1bda
+Merge: c2523f0 60452c4
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Mon Apr 29 18:43:08 2019 +0200
+
+    not something important
+
+commit c2523f0fa3db21470029619302b15b0dd6154250
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Mon Apr 29 18:39:52 2019 +0200
+
+    pull changes
+
+commit 4a385243bd57c0c2086cbd182531383ae0d257a0
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Mon Apr 29 18:38:48 2019 +0200
+
+    pull changes
+
+commit 60452c4fb72ba1e76447a20d6592d3ab17316862
+Merge: 7d038cf 67f57e2
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Mon Apr 29 18:34:31 2019 +0200
+
+    merging
+
+commit 7d038cf787e003fe65ec05d17260c2c145e5ad0f
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Mon Apr 29 18:30:17 2019 +0200
+
+    screening update
+
+commit 67f57e23361596d2c908c9b5347d81f899f992bb
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Mon Apr 29 13:28:23 2019 +0200
+
+    Client view
+
+commit 75c78e49bf2ecc2d03cf7bad40e657943044d876
+Merge: eb4878d e976abc
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Sun Apr 28 21:34:32 2019 +0200
+
+    conflicts done
+
+commit eb4878d8c3b8433eb8d412a2e81d6fa2c28eae47
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Sun Apr 28 21:30:58 2019 +0200
+
+    input test
+
+commit e976abcebcaaf960b24f7637ab6a689d814956ec
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Sun Apr 28 21:26:21 2019 +0200
+
+    comments
+
+commit 42af3f67ee47f357185e4205aab0bbff483c5ade
+Merge: 41973c5 372fa7f
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Sun Apr 28 11:56:18 2019 +0200
+
+    Merge branch 'master' of https://github.com/xminarikd/VAsVA
+
+commit 41973c5d2675d5e0081be925414aee19fe42a1c5
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Sun Apr 28 11:56:10 2019 +0200
+
+    nope
+
+commit 372fa7f99fa9847f8e0fea946e3bef6a08b59e2d
+Merge: 64606be b663b0e
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Sun Apr 28 11:53:46 2019 +0200
+
+    merging
+
+commit b663b0e19990e04653b5f2142fc9d9ce30545d5a
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Sun Apr 28 11:44:39 2019 +0200
+
+    Multilanguage
+
+commit 64606bed08a1290fad0bb3443ef95bce48750383
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Sun Apr 28 11:44:29 2019 +0200
+
+    Logger
+
+commit a00e0b50b5c1319360f61188f77ebf82f76067ad
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Sat Apr 27 17:02:14 2019 +0200
+
+    secured_password
+
+commit 24fb1280bed59bb01ad3268b96bc5b3b47c94484
+Merge: aa3feb4 4750872
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Sat Apr 27 15:47:41 2019 +0200
+
+    merging
+
+commit aa3feb4259dd17f797e3e9bd8d92eaf39214a590
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Sat Apr 27 15:38:42 2019 +0200
+
+    closing stages
+
+commit 4750872cfdb64c79d86820b3cadc24fb808f5afd
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Sat Apr 27 15:37:51 2019 +0200
+
+    Add screening
+
+commit 12a713eb43fc476670acb580a836523b80e5e4bd
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Sat Apr 27 13:14:08 2019 +0200
+
+    sendingMails
+
+commit 2f708238e2e44d1152a1e4bf70e703a6838158b2
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Sat Apr 27 00:17:03 2019 +0200
+
+    qrgenerator
+
+commit d152f5dc278aeaf27175c4e924e9c7e071527076
+Merge: bb090aa ba1fc58
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Fri Apr 26 20:24:31 2019 +0200
+
+    merging
+
+commit bb090aacf473f3447c7e69278d33366ca3acf3be
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Fri Apr 26 20:18:29 2019 +0200
+
+    pdfCreator
+
+commit ba1fc58dc2d26895424bcc5080662c561ab375f9
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Fri Apr 26 12:19:03 2019 +0200
+
+    Movie and Customer adding
+
+commit 0e6c46603c6a4046b9a4db72b0ddd3efef70b5ca
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Thu Apr 25 16:12:00 2019 +0200
+
+    merging
+
+commit 2a5a721a9d80bfaf3faf3217e22caa1d2f130393
+Merge: 9e04e1e ab29910
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Thu Apr 25 16:05:57 2019 +0200
+
+    Merge branch 'master' of https://github.com/xminarikd/VAsVA
+
+commit ab29910cf8082acf9621074723cea2c568d5efb4
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Thu Apr 25 16:05:10 2019 +0200
+
+    delete
+
+commit 9e04e1e168965ed7ddf34912ef0939c2f265b329
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Thu Apr 25 15:38:39 2019 +0200
+
+    connect movie and booking
+
+commit 7d7243af4123cab2202c2d87ef64737e4a8dd64d
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Thu Apr 25 15:37:01 2019 +0200
+
+    Registration + UI
+
+commit b48423927e3552f0f9c411c80d146f7c03681f32
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Wed Apr 24 23:22:10 2019 +0200
+
+    booking v0.6
+
+commit 90db54edffc32b746177ad780cd513ffdccf57f1
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Wed Apr 24 21:35:54 2019 +0200
+
+    booking seats
+
+commit f6a93576f01ca50947dc1422b5917a104757c6d1
+Merge: c61e440 bca2f83
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Tue Apr 23 21:27:39 2019 +0200
+
+    removed merge conflicts
+
+commit c61e4408bd5661360c7a808e1aca6021965b54b7
+Author: tomasbabjak <32101724+tomasbabjak@users.noreply.github.com>
+Date:   Tue Apr 23 21:06:20 2019 +0200
+
+    come to meee
+
+commit bca2f83e6bc7ead6efab1514edb309249545406f
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Tue Apr 23 20:31:00 2019 +0200
+
+    returning user
+
+commit 0213314dda15b583106b8ea546983bb35ca3a052
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Tue Apr 23 20:03:42 2019 +0200
+
+    login/movies
+
+commit acdd390810ed5f9b9264447a9d0bf14a11e0e17c
+Author: xminarikd <32222554+xminarikd@users.noreply.github.com>
+Date:   Wed Apr 17 18:13:40 2019 +0200
+
+    initial commit
