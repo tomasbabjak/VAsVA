@@ -50,6 +50,11 @@
         </AnchorPane>
         <AnchorPane id="background" layoutX="168.0" layoutY="28.0" prefHeight="371.0" prefWidth="532.0">
             <children>
+                <Label fx:id="welcome" alignment="CENTER" layoutX="148.0" layoutY="32.0" prefHeight="65.0" prefWidth="237.0" style="-fx-font-size: 20;" text="Welcome to" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
                 <ImageView fx:id="logo" fitHeight="152.0" fitWidth="316.0" layoutX="122.0" layoutY="88.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
                 <Button fx:id="manageFilmsButton" layoutX="4.0" layoutY="272.0" minWidth="30.0" mnemonicParsing="false" onAction="#manageMoviesClick" prefHeight="43.0" prefWidth="525.0" style="-fx-background-color: #353238; -fx-min-width: 40;" text="Add Film" textFill="WHITE">
                     <font>
@@ -61,11 +66,6 @@
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Label fx:id="welcome" alignment="CENTER" layoutX="148.0" layoutY="32.0" prefHeight="65.0" prefWidth="237.0" style="-fx-font-size: 20;" text="Welcome to" textAlignment="CENTER" wrapText="true">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="57.0" prefWidth="702.0">
