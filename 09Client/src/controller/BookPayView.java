@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.StageStyle;
 import property.PropertyReader;
 import testuj.BookingManagerRemote;
 import javax.imageio.ImageIO;
@@ -193,6 +194,7 @@ public class BookPayView {
         alert.setTitle("Reservation Succes");
         alert.setHeaderText("Thank you from your Reservation. Ticket was sent to your email.");
         alert.setContentText("Would you like to download it ?");
+        alert.initStyle(StageStyle.UNDECORATED);
 
         ButtonType buttonTypeOne = new ButtonType("Download");
         ButtonType buttonTypeTwo = new ButtonType("Close");

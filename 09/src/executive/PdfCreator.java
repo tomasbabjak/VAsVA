@@ -88,7 +88,7 @@ public class PdfCreator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Je zle");
+        //System.out.println("Je zle");
         return null;
     }
 
